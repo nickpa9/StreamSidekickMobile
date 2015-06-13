@@ -1,0 +1,119 @@
+angular.module('movieApp', ['ionic', 'angular-cache'])
+
+.run(function ($ionicPlatform, CacheFactory) {
+  $ionicPlatform.ready(function () {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if (window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+
+    CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
+    CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
+    CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
+    CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
+    CacheFactory('staticCache', { storageMode: 'localStorage' });
+
+  });
+})
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('home', {
+      abstract: true,
+      url: "/home",
+      templateUrl: "app/home/home.html"
+    })
+
+    .state('home.movie', {
+      url: "/movies/:movieName?:rank",
+      cache: false,
+      views: {
+        "mainContent": {
+          templateUrl: "app/movie/movie.html"
+        }
+      },
+      params: {
+        top10: false,
+        previousTitle: null
+      }
+    })
+
+    .state('home.genreMovie', {
+        url: "/genres/genreMovie/:movieName",
+        views: {
+          "mainContent": {
+            templateUrl: "app/genres/genreMovie.html"
+          }
+        },
+        params: {
+          genre: null,
+          previousTitle: null
+        }
+      })
+
+    .state('home.genreMovieList', {
+      url: "/genres/genreMovieList",
+      cache: false,
+      views: {
+        "mainContent": {
+          templateUrl: "app/genres/genreMovieList.html"
+        }
+      },
+      params: {
+        genre: null
+      }
+    })
+
+    .state('home.recentlyAddedList', {
+      url: "/recentlyAdded/recentlyAddedList",
+      views: {
+        "mainContent": {
+          templateUrl: "app/recentlyAdded/recentlyAddedList.html"
+        }
+      }
+    })
+
+    .state('home.recentlyAddedMovie', {
+      url: "/recentlyAdded/recentlyAddedMovie/:movieName",
+      views: {
+        "mainContent": {
+          templateUrl: "app/recentlyAdded/recentlyAddedMovie.html"
+        }
+      },
+      params: {
+        previousTitle: null
+      }
+    })
+
+    .state('home.top10', {
+      url: "/top10",
+      views: {
+        "mainContent": {
+          templateUrl: "app/top10Movies/top10.html"
+        }
+      }
+    })
+
+    .state('home.genres', {
+      url: "/genres",
+      views: {
+        "mainContent": {
+          templateUrl: "app/genres/genres.html"
+        }
+      }
+    })
+
+    .state('home.movieDay', {
+      url: "/movieDay",
+      views: {
+        "mainContent": {
+          templateUrl: "app/home/movieDay.html"
+        }
+      }
+    });
+
+  $urlRouterProvider.otherwise('/home/movieDay');
+});

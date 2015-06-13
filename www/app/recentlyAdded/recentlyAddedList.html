@@ -1,0 +1,19 @@
+<ion-view ng-controller="RecentlyAddedListController as vm" title="Newly Released" class="listWrapper">
+    <ion-content class="listContent">
+        <div class="list thumbnailList">
+            <a class="item item-thumbnail-right" ng-repeat="movie in vm.movies" ng-click="vm.selectMovie(movie, $index)">
+                <img class="poster" src="{{ movie.poster }}">
+                <div class="movieInfo">
+                    <h2 class="movieTitle">{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
+                    <p class="genre">{{ movie.genre }}</p>
+                </div>
+                <div class="movieRatings">
+                    <div class="imdb">
+                        <img src="../../img/imdbLogo.png" height="12" width="25"/>
+                        <span class="imdbRating">{{ movie.imdbRating }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
