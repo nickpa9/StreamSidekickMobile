@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "realApp: An Ionic project",
   "scripts": {
-    "start": "www/app/app.js"
+    "start": "www/index"
   },
   "dependencies": {
     "gulp": "^3.5.6",

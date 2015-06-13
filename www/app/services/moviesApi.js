@@ -4,6 +4,9 @@
   angular.module('movieApp').factory('moviesApi', ['$http', '$q', '$ionicLoading', 'CacheFactory', moviesApi]);
 
   function moviesApi($http, $q, $ionicLoading, CacheFactory) {
+
+    var apiHost = "http://streamsidekickapi.evennode.com"; //http://localhost:3000";
+
     self.moviesCache = CacheFactory.get('moviesCache');
     self.topRatedMovies = CacheFactory.get('topRatedMovies');
     self.genreMovies = CacheFactory.get('genreMovies');
@@ -33,7 +36,7 @@
       if (top10Movies) {
         deferred.resolve(top10Movies);
       } else {
-        $http.get('http://localhost:3000/api/amazonPrime/movies/top/50')
+        $http.get(apiHost + '/api/amazonPrime/movies/top/50')
             .success(function (data, status) {
               self.topRatedMovies.put('top10Movies', data);
               deferred.resolve(data);
@@ -52,7 +55,7 @@
         if (genreMovies) {
           deferred.resolve(genreMovies);
         } else {
-          $http.get('http://localhost:3000/api/amazonPrime/movies/' + genre + '/top/100')
+          $http.get(apiHost + '/api/amazonPrime/movies/' + genre + '/top/100')
             .success(function (data, status) {
                 self.genreMovies.put(genre, data);
                 deferred.resolve(data);
@@ -73,7 +76,7 @@
       if (recentlyAddedMovies) {
         deferred.resolve(recentlyAddedMovies);
       } else {
-        $http.get('http://localhost:3000/api/amazonPrime/movies/recentlyAdded')
+        $http.get(apiHost + '/api/amazonPrime/movies/recentlyAdded')
           .success(function (data, status) {
             self.recentlyAddedMovies.put('recentlyReleased', data);
               deferred.resolve(data);
