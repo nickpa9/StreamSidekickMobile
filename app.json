@@ -1,0 +1,15 @@
+{
+  "name": "Stream Sidekick Mobile",
+  "description": "Mobile App for Stream Sidekick",
+  "keywords": [
+    "stream sidekick",
+    "amazon prime"
+  ],
+  "website": "http://streamsidekick.co.uk",
+  "repository": "https://github.com/Nick-Patrick/StreamSidekickMobile",
+  "success_url": "/www/index",
+  "WEB_CONCURRENCY": {
+    "description": "The number of processes to run.",
+    "value": "1"
+  }
+}
