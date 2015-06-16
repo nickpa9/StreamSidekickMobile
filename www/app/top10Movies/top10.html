@@ -1,11 +1,14 @@
 <ion-view ng-controller="Top10Controller as vm" title="Top Movies" class="listWrapper">
   <ion-content class="listContent"">
     <div class="list thumbnailList">
-      <a class="item item-thumbnail-right" collection-repeat="movie in vm.top10Movies" ng-click="vm.selectMovie(movie, $index)">
+      <a class="item item-thumbnail-right shortlisted" collection-repeat="movie in vm.top10Movies" ng-click="vm.selectMovie(movie, $index)">
         <img class="poster" src="{{ movie.poster }}">
         <div class="movieInfo">
           <h2 class="movieTitle"><span class="rank">{{ $index + 1 }}. </span>{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
           <p class="genre">{{ movie.genre }}</p>
+        </div>
+        <div class="streamIcons">
+          <span class="streamIcon"><img src="img/primeIcon.png"/></span>
         </div>
         <div class="movieRatings">
           <div class="imdb">

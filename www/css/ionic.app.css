@@ -7700,6 +7700,9 @@ a.button {
   padding-right: 67px;
   max-height: 100px;
   height: 100px; }
+  .listWrapper .listContent .thumbnailList .item-thumbnail-right.shortlisted {
+    border-left: 10px solid;
+    border-left-color: rgba(9, 208, 255, 0.3); }
   .listWrapper .listContent .thumbnailList .item-thumbnail-right .movieInfo {
     max-width: 100%;
     position: relative;
@@ -7721,12 +7724,12 @@ a.button {
     .listWrapper .listContent .thumbnailList .item-thumbnail-right .movieInfo .genre {
       color: #b8dffc; }
     .listWrapper .listContent .thumbnailList .item-thumbnail-right .movieInfo .actors {
-      position: absolute;
-      bottom: 0;
       color: #b8dffc;
       width: 100%;
+      height: 20px;
+      white-space: nowrap;
       padding-right: 40px;
-      white-space: normal; }
+      text-overflow: ellipsis; }
   .listWrapper .listContent .thumbnailList .item-thumbnail-right img.poster {
     opacity: .8;
     top: 0;
@@ -7736,6 +7739,9 @@ a.button {
     max-height: 100%;
     width: 67px;
     max-width: 67px; }
+  .listWrapper .listContent .thumbnailList .item-thumbnail-right .streamIcons {
+    position: absolute;
+    bottom: 0; }
   .listWrapper .listContent .thumbnailList .item-thumbnail-right .movieRatings {
     color: #fff;
     width: 26px;
@@ -7772,13 +7778,14 @@ a.button {
       bottom: 0; }
       .movieScreen .wrapper .footer button {
         height: 100%;
-        width: 50%;
+        width: 100%;
         border: 0;
         color: #fff; }
         .movieScreen .wrapper .footer button.shortlist {
           float: left;
           background: #2B4E72; }
         .movieScreen .wrapper .footer button.watched {
+          display: none;
           float: right;
           background: #353432; }
     .movieScreen .wrapper .movieArt {

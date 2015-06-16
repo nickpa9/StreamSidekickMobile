@@ -19,7 +19,7 @@
       bottom: 0;
       button {
         height: 100%;
-        width: 50%;
+        width: 100%;
         border: 0;
         color: #fff;
         &.shortlist {
@@ -27,6 +27,7 @@
           background: $royalBlue;
         }
         &.watched {
+          display: none;
           float: right;
           background: $royalBrown;
         }

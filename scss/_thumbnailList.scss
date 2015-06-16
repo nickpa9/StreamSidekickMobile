@@ -8,7 +8,6 @@
         background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* Opera 12+ */
         background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* IE10+ */
         border: 0;
-        //background: transparent;
         padding-left: .6rem;
         border-bottom: 1px solid;
         border-color: rgba(255, 255, 255, .1);
@@ -17,6 +16,12 @@
         padding-right: 67px;
         max-height: 100px;
         height: 100px;
+
+        &.shortlisted {
+          border-left: 10px solid;
+          border-left-color: rgba(9, 208, 255, 0.3);
+        }
+
         .movieInfo {
           max-width: 100%;
           position: relative;
@@ -46,12 +51,12 @@
           }
 
           .actors {
-            position: absolute;
-            bottom: 0;
             color: $lightBlue;
             width: 100%;
+            height: 20px;
+            white-space: nowrap;
             padding-right: 40px;
-            white-space: normal;
+            text-overflow: ellipsis;
           }
 
         }
@@ -65,6 +70,11 @@
           max-height: 100%;
           width: 67px;
           max-width: 67px;
+        }
+
+        .streamIcons {
+          position: absolute;
+          bottom: 0;
         }
 
         .movieRatings {
