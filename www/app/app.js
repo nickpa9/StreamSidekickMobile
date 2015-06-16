@@ -18,9 +18,11 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+      $ionicConfigProvider.views.transition('none');
 
-  $stateProvider
+
+      $stateProvider
     .state('home', {
       abstract: true,
       url: "/home",

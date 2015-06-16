@@ -1,7 +1,7 @@
 <ion-view ng-controller="GenresController as vm" title="Genres">
     <ion-content class="has-header">
         <div class="genreList list">
-            <a class="item" collection-repeat="genre in vm.genres" style="background-image: url('img/{{ genre.name }}Genre.png');" ng-click="vm.selectGenre(genre)">
+            <a class="item" ng-repeat="genre in vm.genres" style="background-image: url('img/{{ genre.name }}Genre.png');" ng-click="vm.selectGenre(genre)">
                 <div class="overlay" >
 
                 </div>

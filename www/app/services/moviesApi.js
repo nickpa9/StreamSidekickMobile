@@ -15,7 +15,7 @@
     this.movies = getMovies();
 
     function getMovies () {
-      $http.get('http://localhost:3000/api/amazonPrime/movies/')
+      $http.get(apiHost + '/api/amazonPrime/movies/')
           .success(function (data, status) {
             if (status === 200) {
               data.forEach(function (movie) {
