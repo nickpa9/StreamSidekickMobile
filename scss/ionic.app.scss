@@ -38,7 +38,7 @@ p, h1, h2, h3, span, ul, li, a, div {
 
 .nav-bar-block {
   .transparent-nav {
-    background-color: transparent;
+    background: rgba(000, 000, 000, 0.5);
     border-bottom: 0;
 
     .title-left {
@@ -48,7 +48,15 @@ p, h1, h2, h3, span, ul, li, a, div {
   }
 }
 
-.pane {
-  background: #252528;
+.mainContent {
+  background: url('../img/Sci-FiGenre.png') no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.mainOverlay {
+  background: rgba(000, 000, 000, 0.9);
+  height: 100%;
+  width: 100%;
 }
 

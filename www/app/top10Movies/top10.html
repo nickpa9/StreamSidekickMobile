@@ -1,7 +1,9 @@
-<ion-view ng-controller="Top10Controller as vm" title="Top Movies" class="listWrapper">
-  <ion-content class="listContent" has-bouncing="true">
-    <div class="list thumbnailList">
-      <a class="item item-thumbnail-right shortlisted" collection-repeat="movie in vm.top10Movies" ng-click="vm.selectMovie(movie, $index)">
+</ion-nav-bar><ion-view ng-controller="Top10Controller as vm" title="Top Movies" class="listWrapper">
+  <ion-content has-bouncing="true" class="mainOverlay">
+    <ion-list can-swipe="true" class="listContent list thumbnailList">
+      <ion-item class="item item-thumbnail-right"
+                ng-click="vm.selectMovie(movie, $index)"
+                collection-repeat="movie in vm.top10Movies">
         <img class="poster" src="{{ movie.poster }}">
         <div class="movieInfo">
           <h2 class="movieTitle"><span class="rank">{{ $index + 1 }}. </span>{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
@@ -16,7 +18,8 @@
             <span class="imdbRating">{{ movie.imdbRating }}</span>
           </div>
         </div>
-      </a>
-    </div>
+
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

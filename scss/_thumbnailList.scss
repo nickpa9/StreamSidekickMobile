@@ -1,101 +1,102 @@
- .listWrapper {
-  .listContent {
-    .thumbnailList {
-      .item {
-        margin: 1px 0;
-        background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 250%); /* FF3.6+ */
-        background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* Chrome10+,Safari5.1+ */
-        background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* Opera 12+ */
-        background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* IE10+ */
-        border: 0;
-        padding-left: .6rem;
-        border-bottom: 1px solid;
-        border-color: rgba(255, 255, 255, .1);
+.listWrapper {
+  width: 100%;
+  height: 100%;
+  background: url('../img/Sci-FiGenre.png') no-repeat !important;
+  .thumbnailList {
+    .item {
+      margin: 1px 0;
+      background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 250%); /* FF3.6+ */
+      background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* Chrome10+,Safari5.1+ */
+      background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* Opera 12+ */
+      background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 250%); /* IE10+ */
+      border: 0;
+      padding-left: .6rem;
+      border-bottom: 1px solid;
+      border-color: rgba(255, 255, 255, .1);
+    }
+    .item-thumbnail-right {
+      padding-right: 67px;
+      max-height: 100px;
+      height: 100px;
+
+      &.shortlisted {
+        border-left: 10px solid;
+        border-left-color: rgba(9, 208, 255, 0.3);
       }
-      .item-thumbnail-right {
-        padding-right: 67px;
-        max-height: 100px;
-        height: 100px;
 
-        &.shortlisted {
-          border-left: 10px solid;
-          border-left-color: rgba(9, 208, 255, 0.3);
+      .movieInfo {
+        max-width: 100%;
+        position: relative;
+        height: 100%;
+
+        .rank {
+          font-size: .5em;
         }
-
-        .movieInfo {
-          max-width: 100%;
-          position: relative;
-          height: 100%;
-
-          .rank {
-            font-size: .5em;
-          }
-          h2.movieTitle {
-            color: #fff;
-            font-size: 1.5em;
-            white-space: nowrap;
-            font-weight: 300;
-            padding-right: 30px;
-          }
-          .movieYear {
-            position: absolute;
-            top: 0;
-            right: 10px;
-            font-size: .5em;
-            color: $lightGrey;
-          }
-
-          .genre {
-            color: $lightBlue;
-
-          }
-
-          .actors {
-            color: $lightBlue;
-            width: 100%;
-            height: 20px;
-            white-space: nowrap;
-            padding-right: 40px;
-            text-overflow: ellipsis;
-          }
-
-        }
-
-        img.poster {
-          opacity: .8;
-          top: 0;
-          right: 0;
-          height: 100px;
-          padding: 0;
-          max-height: 100%;
-          width: 67px;
-          max-width: 67px;
-        }
-
-        .streamIcons {
-          position: absolute;
-          bottom: 0;
-        }
-
-        .movieRatings {
+        h2.movieTitle {
           color: #fff;
-          width: 26px;
+          font-size: 1.5em;
+          white-space: nowrap;
+          font-weight: 300;
+          padding-right: 30px;
+        }
+        .movieYear {
           position: absolute;
-          right: 73px;
-          bottom: 0;
-          text-align: right;
-          padding: 10px 4px;
-          .imdb {
-            img {
-              float: right;
-            }
-            .imdbRating {
-              text-align: center;
-              float: right;
-              margin-top: -34px;
-              font-weight: 900;
-              font-size: 1.2em;
-            }
+          top: 0;
+          right: 10px;
+          font-size: .5em;
+          color: $lightGrey;
+        }
+
+        .genre {
+          color: $lightBlue;
+
+        }
+
+        .actors {
+          color: $lightBlue;
+          width: 100%;
+          height: 20px;
+          white-space: nowrap;
+          padding-right: 40px;
+          text-overflow: ellipsis;
+        }
+
+      }
+
+      img.poster {
+        opacity: .8;
+        top: 0;
+        right: 0;
+        height: 100px;
+        padding: 0;
+        max-height: 100%;
+        width: 67px;
+        max-width: 67px;
+      }
+
+      .streamIcons {
+        position: absolute;
+        bottom: 0;
+      }
+
+      .movieRatings {
+        color: #fff;
+        width: 26px;
+        position: absolute;
+        right: 73px;
+        bottom: 0;
+        text-align: right;
+        padding: 10px 4px;
+        .imdb {
+          img {
+            float: right;
+          }
+          .imdbRating {
+            text-align: center;
+            float: right;
+            margin-top: -34px;
+            font-weight: 900;
+            font-size: 1.2em;
           }
         }
       }
