@@ -7944,7 +7944,7 @@ p, h1, h2, h3, span, ul, li, a, div {
   font-family: 'Exo 2'; }
 
 .nav-bar-block .transparent-nav {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.9);
   border-bottom: 0; }
   .nav-bar-block .transparent-nav .title-left {
     text-align: center;
