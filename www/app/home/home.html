@@ -10,29 +10,31 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-dark">
-      <h1 class="title">Stream Sidekick.</h1>
-    </header>
-    <ion-content class="has-header">
-      <ion-list>
-        <ion-item nav-clear menu-close ui-sref="home.movie({movieName: '', top10: false})">All Movies
-          <ion-nav-view name="movie"></ion-nav-view>
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="home.top10">Top Rated Movies
-          <ion-nav-view name="top10"></ion-nav-view>
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="home.recentlyAddedList">Newly Released
-          <ion-nav-view name="recentlyAddedList"></ion-nav-view>
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="home.genres">Genres
-          <ion-nav-view name="genres"></ion-nav-view>
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="home.movieDay">Movie of the Day</ion-item>
-        <ion-item nav-clear menu-close>Watchlist (dummy)</ion-item>
-        <ion-item nav-clear menu-close>Special Deals (dummy)</ion-item>
-        <ion-item nav-clear menu-close>Settings (dummy)</ion-item>
-      </ion-list>
-    </ion-content>
+    <div class="overlay">
+      <header class="bar bar-header bar-dark">
+        <h1 class="title">Stream Sidekick.</h1>
+      </header>
+      <ion-content class="has-header">
+        <ion-list>
+          <ion-item nav-clear menu-close ui-sref="home.movie({movieName: '', top10: false})">All Movies
+            <ion-nav-view name="movie"></ion-nav-view>
+          </ion-item>
+          <ion-item nav-clear menu-close ui-sref="home.top10">Top Rated Movies
+            <ion-nav-view name="top10"></ion-nav-view>
+          </ion-item>
+          <ion-item nav-clear menu-close ui-sref="home.recentlyAddedList">Newly Released
+            <ion-nav-view name="recentlyAddedList"></ion-nav-view>
+          </ion-item>
+          <ion-item nav-clear menu-close ui-sref="home.genres">Genres
+            <ion-nav-view name="genres"></ion-nav-view>
+          </ion-item>
+          <ion-item nav-clear menu-close ui-sref="home.movieDay">Movie of the Day</ion-item>
+          <ion-item nav-clear menu-close>Watchlist (dummy)</ion-item>
+          <ion-item nav-clear menu-close>Special Deals (dummy)</ion-item>
+          <ion-item nav-clear menu-close>Settings (dummy)</ion-item>
+        </ion-list>
+      </ion-content>
+    </div>
   </ion-side-menu>
 
 </ion-side-menus>

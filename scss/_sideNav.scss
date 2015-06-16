@@ -1,8 +1,17 @@
+.view {
+  background: url('../img/Sci-FiGenre.png') no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 .menu-left {
-  background: $darkBlack;
-
+  background: transparent;
+  .overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(000,000,000,0.8);
+  }
   .bar-header {
-    background: $royalBlue;
+    background: rgba(043, 78, 114, 0.2);
     height: 86px;
     .title {
       height: 100%;
@@ -22,8 +31,8 @@
     font-size: 1.4em;
     font-weight: 300;
     a {
-      background: $darkBlack;
+      background: transparent;
     }
-    background: $darkBlack;
+    background: transparent;
   }
 }

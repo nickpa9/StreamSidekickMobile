@@ -1,7 +1,7 @@
 <ion-view ng-controller="RecentlyAddedListController as vm" title="Newly Released" class="listWrapper">
-    <ion-content class="listContent">
-        <div class="list thumbnailList">
-            <a class="item item-thumbnail-right" collection-repeat="movie in vm.movies" ng-click="vm.selectMovie(movie, $index)">
+    <ion-content has-bouncing="true" class="mainOverlay">
+        <ion-list class="list thumbnailList listContent">
+            <ion-item class="item item-thumbnail-right" collection-repeat="movie in vm.movies" ng-click="vm.selectMovie(movie, $index)">
                 <img class="poster" src="{{ movie.poster }}">
                 <div class="movieInfo">
                     <h2 class="movieTitle">{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
@@ -16,7 +16,7 @@
                         <span class="imdbRating">{{ movie.imdbRating }}</span>
                     </div>
                 </div>
-            </a>
-        </div>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>
