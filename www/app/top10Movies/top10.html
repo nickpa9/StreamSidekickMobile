@@ -1,5 +1,5 @@
 <ion-view ng-controller="Top10Controller as vm" title="Top Movies" class="listWrapper">
-  <ion-content class="listContent"">
+  <ion-content class="listContent" has-bouncing="true">
     <div class="list thumbnailList">
       <a class="item item-thumbnail-right shortlisted" collection-repeat="movie in vm.top10Movies" ng-click="vm.selectMovie(movie, $index)">
         <img class="poster" src="{{ movie.poster }}">
