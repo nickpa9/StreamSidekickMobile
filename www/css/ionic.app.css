@@ -7704,9 +7704,10 @@ a.button {
     padding-right: 67px;
     max-height: 100px;
     height: 100px; }
-    .listWrapper .thumbnailList .item-thumbnail-right.shortlisted {
-      border-left: 10px solid;
-      border-left-color: rgba(9, 208, 255, 0.3); }
+    .listWrapper .thumbnailList .item-thumbnail-right.shortlisted-true {
+      border-left: 4px solid;
+      border-left-color: rgba(219, 169, 38, 0.2);
+      background: rgba(203, 176, 118, 0.1); }
     .listWrapper .thumbnailList .item-thumbnail-right .movieInfo {
       max-width: 100%;
       position: relative;
@@ -7784,10 +7785,12 @@ a.button {
         height: 100%;
         width: 100%;
         border: 0;
-        color: #fff; }
-        .movieScreen .wrapper .footer button.shortlist {
-          float: left;
+        color: #fff;
+        transition: 0.5s all linear; }
+        .movieScreen .wrapper .footer button.shortlist-true {
           background: #2B4E72; }
+        .movieScreen .wrapper .footer button.shortlist-false {
+          background: #6F2929; }
         .movieScreen .wrapper .footer button.watched {
           display: none;
           float: right;

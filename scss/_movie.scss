@@ -22,9 +22,12 @@
         width: 100%;
         border: 0;
         color: #fff;
-        &.shortlist {
-          float: left;
+        transition: 0.5s all linear;
+        &.shortlist-true {
           background: $royalBlue;
+        }
+        &.shortlist-false {
+          background: #6F2929;
         }
         &.watched {
           display: none;

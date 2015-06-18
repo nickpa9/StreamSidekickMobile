@@ -118,6 +118,7 @@
                 shortlistToggleStatus = vm.isMovieShortlisted(movieName);
             }
             vm.shortlistMessage = shortlistToggleStatus ? 'Remove from shortlist' : 'Add to shortlist';
+            vm.shortlistStatus = !shortlistToggleStatus;
         };
 
         this.initialise();
