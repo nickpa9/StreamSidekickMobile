@@ -1,17 +1,19 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('MovieController', ['$stateParams', '$state', '$scope', 'moviesApi', MovieController]);
+    angular.module('movieApp').controller('MovieController', ['$stateParams', '$state', '$scope', 'moviesApi', 'CacheFactory', MovieController]);
 
-    function MovieController($stateParams, $state, $scope, moviesApi) {
+    function MovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
         var vm = this;
         var isTop10List = false;
         var movieName = $stateParams.movieName;
         var currentMovieRank;
+        var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
         this.initialise = function () {
             this.setListStatus();
             vm.loadList(false);
+            vm.updateShortlistedMessage();
         };
 
         this.setListStatus = function () {
@@ -89,7 +91,33 @@
             } else if ($stateParams.previousTitle) {
                 this.navigateToPreviousMovieByTitle($stateParams.previousTitle);
             }
+        };
 
+        vm.toggleShortlistedMovie = function (movieTitle) {
+            if (vm.isMovieShortlisted(movieTitle)) {
+                shortlistedMovies.put(movieTitle, {'shortlisted': false});
+            } else {
+                shortlistedMovies.put(movieTitle, {'shortlisted': true});
+            }
+            vm.updateShortlistedMessage(vm.isMovieShortlisted(movieTitle));
+            console.log(shortlistedMovies.get(movieTitle));
+        };
+
+        vm.isMovieShortlisted = function (movieTitle) {
+            var shortlistedMovie = shortlistedMovies.get(movieTitle);
+            if (shortlistedMovie) {
+                return shortlistedMovie.shortlisted;
+            } else {
+                return false;
+            }
+        };
+
+        vm.updateShortlistedMessage = function (shortlistStatus) {
+            var shortlistToggleStatus = shortlistStatus;
+            if (!shortlistStatus) {
+                shortlistToggleStatus = vm.isMovieShortlisted(movieName);
+            }
+            vm.shortlistMessage = shortlistToggleStatus ? 'Remove from shortlist' : 'Add to shortlist';
         };
 
         this.initialise();

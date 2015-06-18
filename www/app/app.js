@@ -14,7 +14,7 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
     CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('staticCache', { storageMode: 'localStorage' });
-
+    CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpore: 'aggressive' });
   });
 })
 

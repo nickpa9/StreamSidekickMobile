@@ -48,7 +48,7 @@
             </div>
             </ion-scroll>
             <div class="footer">
-                <button class="button-large icon ion-ios-star shortlist"></button>
+                <button ng-click="vm.toggleShortlistedMovie(vm.movie.title)" class="button-large icon ion-ios-star shortlist">{{ vm.shortlistMessage }}</button>
                 <button class="button-large icon ion-checkmark watched"></button>
             </div>
         </div>
