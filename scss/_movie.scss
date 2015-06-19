@@ -2,6 +2,14 @@
   background: transparent;
 }
 
+.bar-dark .button.button-icon.ion-android-star {
+  color: #525252;
+
+  &.shortlist-true {
+    color: #ffffff;
+  }
+}
+
 .movieScreen {
   margin-top: -45px;
   background-color: $dark;

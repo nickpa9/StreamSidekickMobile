@@ -1,6 +1,6 @@
 <ion-view ng-controller="MovieController as vm" title="">
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-more"></button>
+        <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}" ng-click="vm.toggleShortlistedMovie(vm.movie.title)"></button>
     </ion-nav-buttons>
     <ion-content ng-show="vm.movie" class="movieScreen"
             scroll="false"
@@ -47,10 +47,6 @@
                 </div>
             </div>
             </ion-scroll>
-            <div class="footer">
-                <button ng-click="vm.toggleShortlistedMovie(vm.movie.title)" class="button-large icon ion-ios-star shortlist-{{vm.shortlistStatus}}">{{ vm.shortlistMessage }}</button>
-                <button class="button-large icon ion-checkmark watched"></button>
-            </div>
         </div>
 
     </ion-content>

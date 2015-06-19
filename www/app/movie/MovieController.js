@@ -13,7 +13,6 @@
         this.initialise = function () {
             this.setListStatus();
             vm.loadList(false);
-            vm.updateShortlistedMessage();
         };
 
         this.setListStatus = function () {
@@ -99,7 +98,6 @@
             } else {
                 shortlistedMovies.put(movieTitle, {'shortlisted': true});
             }
-            vm.updateShortlistedMessage(vm.isMovieShortlisted(movieTitle));
             console.log(shortlistedMovies.get(movieTitle));
         };
 
@@ -110,15 +108,6 @@
             } else {
                 return false;
             }
-        };
-
-        vm.updateShortlistedMessage = function (shortlistStatus) {
-            var shortlistToggleStatus = shortlistStatus;
-            if (!shortlistStatus) {
-                shortlistToggleStatus = vm.isMovieShortlisted(movieName);
-            }
-            vm.shortlistMessage = shortlistToggleStatus ? 'Remove from shortlist' : 'Add to shortlist';
-            vm.shortlistStatus = !shortlistToggleStatus;
         };
 
         this.initialise();
