@@ -7784,40 +7784,22 @@ a.button {
 
 .movieScreen {
   margin-top: -45px;
-  background-color: #444;
+  background-color: #fff;
   width: 100%;
   height: 100%; }
   .movieScreen .wrapper {
     height: 100%;
     width: 100%;
     background: #fff; }
-    .movieScreen .wrapper .footer {
-      height: 5em;
-      width: 100%;
-      position: absolute;
-      bottom: 0; }
-      .movieScreen .wrapper .footer button {
-        height: 100%;
-        width: 100%;
-        border: 0;
-        color: #fff; }
-        .movieScreen .wrapper .footer button.shortlist-true {
-          background: #2B4E72; }
-        .movieScreen .wrapper .footer button.shortlist-false {
-          background: #6F2929; }
-        .movieScreen .wrapper .footer button.watched {
-          display: none;
-          float: right;
-          background: #353432; }
     .movieScreen .wrapper .movieArt {
       width: 100%;
-      height: 50%;
+      height: 65%;
       background-size: cover;
       background-position: center; }
       .movieScreen .wrapper .movieArt .overlay {
         height: 100%;
         width: 100%;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.4);
         position: relative; }
         .movieScreen .wrapper .movieArt .overlay .trailerButtonWrapper {
           display: none;
@@ -7833,26 +7815,43 @@ a.button {
             background-color: rgba(255, 255, 255, 0.15);
             color: #fff;
             border-radius: 10%; }
+        .movieScreen .wrapper .movieArt .overlay .shortlistMessage {
+          background: rgba(0, 0, 0, 0.7);
+          position: absolute;
+          height: 62px;
+          width: 106px;
+          text-align: right;
+          bottom: 0;
+          left: 0;
+          color: #fff;
+          font-size: 1.3em;
+          opacity: 1;
+          padding: 10px;
+          margin-left: -106px;
+          transition: all .1s linear; }
+          .movieScreen .wrapper .movieArt .overlay .shortlistMessage.shortlisted {
+            margin-left: 0; }
         .movieScreen .wrapper .movieArt .overlay .movieRatings {
           position: absolute;
           bottom: 0;
           right: 0;
           color: #fff;
-          width: 70px;
-          background: rgba(111, 111, 111, 0.5); }
-          .movieScreen .wrapper .movieArt .overlay .movieRatings i {
-            float: left;
-            font-size: 1.3em;
-            line-height: 1.6em;
-            padding-left: 10px; }
-          .movieScreen .wrapper .movieArt .overlay .movieRatings span {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: right;
-            margin-bottom: 1px;
-            float: left;
-            font-size: 1.3em; }
+          padding: 10px; }
+          .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb {
+            width: 200px;
+            margin: 0 auto; }
+            .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb img {
+              margin-left: -100px;
+              float: right; }
+            .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb .imdbRating {
+              margin-left: 60px;
+              text-align: center;
+              float: left;
+              width: 200px;
+              margin-top: -44px;
+              font-weight: 300;
+              font-size: 4em;
+              opacity: .8; }
     .movieScreen .wrapper .movieInfo {
       padding: 20px 20px; }
       .movieScreen .wrapper .movieInfo h2.movieTitle {
@@ -7861,8 +7860,6 @@ a.button {
         font-weight: 200;
         width: 100%;
         float: left; }
-      .movieScreen .wrapper .movieInfo .movieYear {
-        font-size: 0.5em; }
       .movieScreen .wrapper .movieInfo .released {
         float: left;
         font-size: 1.1em; }
@@ -7870,8 +7867,13 @@ a.button {
         float: right;
         font-size: 1.1em;
         padding-left: 20px; }
-      .movieScreen .wrapper .movieInfo .movieAgeRating {
+      .movieScreen .wrapper .movieInfo .right {
         float: right; }
+        .movieScreen .wrapper .movieInfo .right .movieYear {
+          padding-left: 10px;
+          float: right;
+          font-size: 1.4em;
+          font-weight: 100; }
       .movieScreen .wrapper .movieInfo .genre {
         float: left;
         color: #8B4513; }
@@ -7961,7 +7963,7 @@ p, h1, h2, h3, span, ul, li, a, div {
   font-family: 'Exo 2'; }
 
 .nav-bar-block .transparent-nav {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   border-bottom: 0; }
   .nav-bar-block .transparent-nav .title-left {
     text-align: center;

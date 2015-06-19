@@ -3,7 +3,8 @@
         <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}" ng-click="vm.toggleShortlistedMovie(vm.movie.title)"></button>
     </ion-nav-buttons>
     <ion-content ng-show="vm.movie" class="movieScreen"
-            scroll="false"
+            scroll="true"
+             overflow-scroll="true"
             on-swipe-right="vm.swipeRight()"
             on-swipe-left="vm.swipeLeft()">
         <div class="wrapper">
@@ -12,26 +13,26 @@
                     <div class="trailerButtonWrapper">
                         <button class="button button-large button-positive icon ion-play"></button>
                     </div>
+                    <div class="shortlistMessage">
+                        <p>Added to watchlist.</p>
+                    </div>
                     <div class="movieRatings">
                         <div class="imdb">
-                            <i class="icon ion-star"></i>
+                            <img src="img/imdbLogo.png" height="36" width="75"/>
                             <span class="imdbRating">{{ vm.movie.imdbRating }}</span>
-                        </div>
-                        <div class="metascore" ng-if="vm.movie.metascore !== 'N/A'">
-                            <i class="icon ion-star"></i>
-                            <span class="metaScore">{{ vm.movie.metascore }}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <ion-scroll direction="y">
             <div class="movieInfo">
-                <span class="movieAgeRating">{{ vm.movie.rated }}</span>
+                <div class="right">
+                    <span class="movieYear">{{ vm.movie.year }}</span>
+                    <span class="movieAgeRating">{{ vm.movie.rated }}</span>
+                </div>
                 <span class="genre">{{ vm.movie.genre }}</span>
 
                 <div class="movieTitle">
                     <h2 class="movieTitle">{{ vm.movie.title }}
-                    <span class="movieYear">{{ vm.movie.year }}</span>
                 </div>
                 <p class="movieDescription">{{ vm.movie.description }}</p>
                 <div class="released">
@@ -46,7 +47,6 @@
                     <p>{{ vm.movie.actors }}</p>
                 </div>
             </div>
-            </ion-scroll>
         </div>
 
     </ion-content>
