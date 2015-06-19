@@ -7746,7 +7746,17 @@ a.button {
       max-width: 67px; }
     .listWrapper .thumbnailList .item-thumbnail-right .streamIcons {
       position: absolute;
-      bottom: 0; }
+      bottom: 0;
+      margin-left: -22px;
+      transition: margin .1s linear; }
+      .listWrapper .thumbnailList .item-thumbnail-right .streamIcons.shortlisted-true {
+        margin-left: 0; }
+      .listWrapper .thumbnailList .item-thumbnail-right .streamIcons span {
+        float: left;
+        padding-right: 8px; }
+        .listWrapper .thumbnailList .item-thumbnail-right .streamIcons span.shortlisted-icon {
+          line-height: 12px;
+          padding-bottom: 4px; }
     .listWrapper .thumbnailList .item-thumbnail-right .movieRatings {
       color: #fff;
       width: 26px;
@@ -7785,8 +7795,7 @@ a.button {
         height: 100%;
         width: 100%;
         border: 0;
-        color: #fff;
-        transition: 0.5s all linear; }
+        color: #fff; }
         .movieScreen .wrapper .footer button.shortlist-true {
           background: #2B4E72; }
         .movieScreen .wrapper .footer button.shortlist-false {
@@ -7959,6 +7968,6 @@ p, h1, h2, h3, span, ul, li, a, div {
   background-size: cover; }
 
 .mainOverlay {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   height: 100%;
   width: 100%; }

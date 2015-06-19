@@ -28,11 +28,11 @@
             }
         };
 
-        vm.toggleShortlisted = function (movieTitle) {
+        vm.toggleShortlisted = function (movieTitle, toggleBoolean) {
             if (vm.isMovieShortlisted(movieTitle)) {
-                shortlistedMovies.put(movieTitle, {'shortlisted': false});
+                shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
             } else {
-                shortlistedMovies.put(movieTitle, {'shortlisted': true});
+                shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
             }
             vm.isMovieShortlisted(movieTitle);
             console.log(shortlistedMovies.get(movieTitle));

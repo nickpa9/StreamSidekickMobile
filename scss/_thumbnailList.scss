@@ -78,6 +78,22 @@
       .streamIcons {
         position: absolute;
         bottom: 0;
+        margin-left: -22px;
+        transition: margin .1s linear;
+
+      &.shortlisted-true {
+        margin-left: 0;
+      }
+
+        span {
+          float: left;
+          padding-right: 8px;
+
+          &.shortlisted-icon {
+            line-height: 12px;
+            padding-bottom: 4px;
+          }
+        }
       }
 
       .movieRatings {
