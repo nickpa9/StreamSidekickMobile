@@ -5,7 +5,7 @@
 
   function moviesApi($http, $q, $ionicLoading, CacheFactory) {
 
-    var apiHost = "http://streamsidekickapi.evennode.com"; //http://localhost:3000";
+    var apiHost = "https://streamsidekick-api.herokuapp.com";
 
     self.moviesCache = CacheFactory.get('moviesCache');
     self.topRatedMovies = CacheFactory.get('topRatedMovies');
