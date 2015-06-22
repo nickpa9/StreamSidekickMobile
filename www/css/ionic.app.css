@@ -7828,7 +7828,7 @@ a.button {
           opacity: 1;
           padding: 10px;
           margin-left: -106px;
-          transition: all .1s linear; }
+          transition: all .3s linear; }
           .movieScreen .wrapper .movieArt .overlay .shortlistMessage.shortlisted {
             margin-left: 0; }
         .movieScreen .wrapper .movieArt .overlay .movieRatings {
@@ -7851,7 +7851,8 @@ a.button {
               margin-top: -44px;
               font-weight: 300;
               font-size: 4em;
-              opacity: .8; }
+              opacity: .9;
+              text-shadow: -1px -1px 0 #383838, 1px -1px 0 #383838, -1px 1px 0 #383838, 1px 1px 0 #383838; }
     .movieScreen .wrapper .movieInfo {
       padding: 20px 20px; }
       .movieScreen .wrapper .movieInfo h2.movieTitle {

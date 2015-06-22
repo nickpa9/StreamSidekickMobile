@@ -9,6 +9,8 @@
 
         moviesApi.getTop10Movies().then(function (response) {
             vm.top10Movies = response;
+        }).finally(function () {
+            vm.cleanUpResults();
         });
 
         vm.selectMovie = function (movie, rank) {
@@ -16,6 +18,16 @@
                 "movieName": movie.title,
                 "rank": rank + 1,
                 "top10": true
+            });
+        };
+
+        vm.cleanUpResults = function () {
+            vm.top10Movies.forEach(function (movie) {
+                for (var key in movie) {
+                    if (movie[key] === 'N/A' || 0) {
+                        delete movie[key];
+                    }
+                }
             });
         };
 
@@ -35,8 +47,6 @@
                 shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
             }
             vm.isMovieShortlisted(movieTitle);
-            console.log(shortlistedMovies.get(movieTitle));
-
         };
 
         vm.isMovieShortlisted = function (movieTitle) {

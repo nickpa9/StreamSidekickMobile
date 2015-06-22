@@ -26,9 +26,18 @@
                     vm.movie = response;
                 }).finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
+                    vm.cleanUpResults();
                 });
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());
+            }
+        };
+
+        vm.cleanUpResults = function () {
+            for (var key in vm.movie) {
+                if(vm.movie[key] === 'N/A' || 0) {
+                    delete vm.movie[key];
+                }
             }
         };
 

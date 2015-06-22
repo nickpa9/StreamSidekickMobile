@@ -1,13 +1,18 @@
 <ion-view ng-controller="GenreMovieListController as vm" title="Top {{ vm.genre }} Movies" class="listWrapper">
     <ion-content has-bouncing="true" class="mainOverlay">
         <ion-list can-swipe="true" class="listContent list thumbnailList">
-            <ion-item class="item item-thumbnail-right" collection-repeat="movie in vm.genreMovies" ng-click="vm.selectMovie(movie, $index)">
+            <ion-item class="item item-thumbnail-right shortlisted-{{vm.isMovieShortlisted(movie.title)}}"
+                      collection-repeat="movie in vm.genreMovies"
+                      ng-click="vm.selectMovie(movie, $index)"
+                      on-swipe-right="vm.toggleShortlisted(movie.title, true)"
+                      on-swipe-left="vm.toggleShortlisted(movie.title, false)">
                 <img class="poster" src="{{ movie.poster }}">
                 <div class="movieInfo">
                     <h2 class="movieTitle">{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
                     <p class="actors">{{ movie.actors }}</p>
                 </div>
-                <div class="streamIcons">
+                <div class="streamIcons shortlisted-{{vm.isMovieShortlisted(movie.title)}}">
+                    <span class="shortlisted-icon"><img height="12" width="12" src="img/ratingStar.png"/></span>
                     <span class="streamIcon"><img src="img/primeIcon.png"/></span>
                 </div>
                 <div class="movieRatings">
