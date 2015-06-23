@@ -1,0 +1,35 @@
+<ion-view ng-controller="WatchlistController as vm" title="Watchlist" class="listWrapper">
+    <ion-content has-bouncing="false" class="mainOverlay">
+        <ion-list class="listContent list">
+
+            <div class="card" ng-repeat="movie in vm.movies">
+                <div class="item header">
+                    <h2>{{movie.title}}</h2>
+                    <p>{{movie.genre}}</p>
+                </div>
+                <div class="item item-body">
+                    <div class="movieDetails">
+                        <img class="poster" src="{{movie.poster}}">
+                        <ul>
+                            <li ng-show="movie.imdbRating">IMDB Rating: <span>{{movie.imdbRating }}</span></li>
+                            <li ng-show="movie.metascore">Metascore: <span>{{ movie.metascore }}</span></li>
+                        </ul>
+                        <ul class="bottom">
+                            <li ng-show="movie.runtime">Runtime: <span>{{ movie.runtime }}</span></li>
+                            <li ng-show="movie.rated">Rated: <span>{{ movie.rated }}</span></li>
+                            <li ng-show="movie.released">Released: <span>{{ movie.released }}</span></li>
+                            <li ng-show="movie.director">Directed by: <span>{{ movie.director }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="description">
+                        <p>{{movie.description}}</p>
+                        <p><span class="cast">Cast: </span>{{ movie.actors }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </ion-list>
+    </ion-content>
+</ion-view>

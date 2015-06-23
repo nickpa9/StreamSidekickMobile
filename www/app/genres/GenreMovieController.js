@@ -113,6 +113,26 @@
 
         };
 
+        vm.toggleShortlistedMovie = function (movieTitle) {
+            if (vm.isMovieShortlisted(movieTitle)) {
+                shortlistedMovies.remove(movieTitle);
+                jQuery('.shortlistMessage').removeClass('shortlisted');
+            } else {
+                shortlistedMovies.put(movieTitle, {'shortlisted': true});
+                jQuery('.shortlistMessage').addClass('shortlisted');
+            }
+            console.log(shortlistedMovies.get(movieTitle));
+        };
+
+        vm.isMovieShortlisted = function (movieTitle) {
+            var shortlistedMovie = shortlistedMovies.get(movieTitle);
+            if (shortlistedMovie) {
+                return shortlistedMovie.shortlisted;
+            } else {
+                return false;
+            }
+        };
+
         this.initialise();
     }
 

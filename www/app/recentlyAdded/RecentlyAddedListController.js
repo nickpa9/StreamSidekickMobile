@@ -42,7 +42,7 @@
 
         vm.toggleShortlisted = function (movieTitle, toggleBoolean) {
             if (vm.isMovieShortlisted(movieTitle)) {
-                shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
+                shortlistedMovies.remove(movieTitle);
             } else {
                 shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
             }

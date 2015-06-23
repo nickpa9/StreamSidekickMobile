@@ -32,17 +32,19 @@
         };
 
         vm.isMovieShortlisted = function (movieTitle) {
-            var shortlistedMovie = shortlistedMovies.get(movieTitle);
-            if (shortlistedMovie) {
-                return shortlistedMovie.shortlisted;
+            if (movieTitle && movieTitle.length > 0) {
+                var shortlistedMovie = shortlistedMovies.get(movieTitle);
+                if (shortlistedMovie) {
+                    return shortlistedMovie.shortlisted;
+                }
             } else {
-                return false;
+                return 'false';
             }
         };
 
         vm.toggleShortlisted = function (movieTitle, toggleBoolean) {
             if (vm.isMovieShortlisted(movieTitle)) {
-                shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
+                shortlistedMovies.remove(movieTitle);
             } else {
                 shortlistedMovies.put(movieTitle, {'shortlisted': toggleBoolean});
             }

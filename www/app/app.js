@@ -14,17 +14,18 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
     CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('staticCache', { storageMode: 'localStorage' });
-    CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpore: 'aggressive' });
+    CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpire: 'aggressive' });
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-      $ionicConfigProvider.views.transition('none');
+      //$ionicConfigProvider.views.transition('none');
 
 
       $stateProvider
     .state('home', {
       abstract: true,
+      cache: false,
       url: "/home",
       templateUrl: "app/home/home.html"
     })
@@ -105,6 +106,16 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
         "mainContent": {
           templateUrl: "app/genres/genres.html"
         }
+      }
+    })
+
+    .state('home.watchlist', {
+      cache: false,
+      url: "/watchlist",
+      views: {
+          "mainContent": {
+              templateUrl: "app/watchlist/watchlist.html"
+          }
       }
     })
 

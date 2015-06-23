@@ -9,7 +9,7 @@
     <ion-nav-view name="mainContent" animation="slide-left-right"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu ng-controller="HomeController as vm" side="left">
     <div class="overlay">
       <header class="bar bar-header bar-dark">
         <h1 class="title">Stream Sidekick.</h1>
@@ -28,8 +28,9 @@
           <ion-item nav-clear menu-close ui-sref="home.genres">Genres
             <ion-nav-view name="genres"></ion-nav-view>
           </ion-item>
-          <ion-item nav-clear menu-close ui-sref="home.movieDay">Movie of the Day</ion-item>
-          <ion-item nav-clear menu-close>Watchlist (dummy)</ion-item>
+          <ion-item nav-clear menu-close ui-sref="home.watchlist">Watchlist ({{ vm.getShortlistedMoviesCount() }})
+            <ion-nav-view name="watchlist"></ion-nav-view>
+          </ion-item>
         </ion-list>
       </ion-content>
     </div>

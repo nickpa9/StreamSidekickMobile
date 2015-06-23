@@ -103,7 +103,7 @@
 
         vm.toggleShortlistedMovie = function (movieTitle) {
             if (vm.isMovieShortlisted(movieTitle)) {
-                shortlistedMovies.put(movieTitle, {'shortlisted': false});
+                shortlistedMovies.remove(movieTitle);
                 jQuery('.shortlistMessage').removeClass('shortlisted');
             } else {
                 shortlistedMovies.put(movieTitle, {'shortlisted': true});
