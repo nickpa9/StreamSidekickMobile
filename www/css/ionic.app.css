@@ -7777,120 +7777,61 @@ a.button {
 .pane {
   background: transparent; }
 
-.bar-dark .button.button-icon.ion-android-star {
-  color: #525252; }
-  .bar-dark .button.button-icon.ion-android-star.shortlist-true {
-    color: #ffffff; }
-
 .movieScreen {
-  margin-top: -45px;
-  background-color: #fff;
   width: 100%;
-  height: 100%; }
-  .movieScreen .wrapper {
-    height: 100%;
-    width: 100%;
-    background: #fff; }
-    .movieScreen .wrapper .movieArt {
-      width: 100%;
-      height: 65%;
-      background-size: cover;
-      background-position: center; }
-      .movieScreen .wrapper .movieArt .overlay {
-        height: 100%;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        position: relative; }
-        .movieScreen .wrapper .movieArt .overlay .trailerButtonWrapper {
-          display: none;
-          width: 100%;
-          height: 68px;
-          position: relative;
-          top: 50%;
+  height: 100%;
+  background: url('../img/Sci-FiGenre.png') no-repeat !important; }
+  .movieScreen .card {
+    margin: 0; }
+    .movieScreen .card .item-body {
+      overflow: hidden; }
+      .movieScreen .card .item-body .description {
+        overflow-y: auto;
+        position: relative;
+        padding: 10px 20px 40px;
+        text-align: justify; }
+        .movieScreen .card .item-body .description .castWrapper {
           text-align: center; }
-          .movieScreen .wrapper .movieArt .overlay .trailerButtonWrapper .icon.ion-play {
-            padding: 6px 10px; }
-          .movieScreen .wrapper .movieArt .overlay .trailerButtonWrapper .button.button-positive {
-            border-color: #fff;
-            background-color: rgba(255, 255, 255, 0.15);
+        .movieScreen .card .item-body .description h3 {
+          text-align: center;
+          font-weight: 100;
+          font-size: 1em;
+          color: #414141;
+          text-transform: uppercase;
+          font-family: Georgia, ‘Times New Roman’, Times, serif; }
+        .movieScreen .card .item-body .description p {
+          max-height: 100%; }
+        .movieScreen .card .item-body .description hr {
+          border: 0;
+          height: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+        .movieScreen .card .item-body .description .shortlistMessage {
+          position: absolute;
+          height: 30px;
+          width: 160px;
+          background: #2f2f2f;
+          color: #fff;
+          border-radius: 20px 20px;
+          opacity: 0;
+          top: 50%;
+          left: 50%;
+          margin-left: -80px;
+          transition: opacity 0.8s ease; }
+          .movieScreen .card .item-body .description .shortlistMessage.shortlisted {
+            opacity: 0.6; }
+          .movieScreen .card .item-body .description .shortlistMessage p {
             color: #fff;
-            border-radius: 10%; }
-        .movieScreen .wrapper .movieArt .overlay .shortlistMessage {
-          background: rgba(0, 0, 0, 0.7);
-          position: absolute;
-          height: 62px;
-          width: 106px;
-          text-align: right;
-          bottom: 0;
-          left: 0;
-          color: #fff;
-          font-size: 1.3em;
-          opacity: 1;
-          padding: 10px;
-          margin-left: -106px;
-          transition: all .3s linear; }
-          .movieScreen .wrapper .movieArt .overlay .shortlistMessage.shortlisted {
-            margin-left: 0; }
-        .movieScreen .wrapper .movieArt .overlay .movieRatings {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          color: #fff;
-          padding: 10px; }
-          .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb {
-            width: 200px;
-            margin: 0 auto; }
-            .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb img {
-              margin-left: -100px;
-              float: right; }
-            .movieScreen .wrapper .movieArt .overlay .movieRatings .imdb .imdbRating {
-              margin-left: 60px;
-              text-align: center;
-              float: left;
-              width: 200px;
-              margin-top: -44px;
-              font-weight: 300;
-              font-size: 4em;
-              opacity: .9;
-              text-shadow: -1px -1px 0 #383838, 1px -1px 0 #383838, -1px 1px 0 #383838, 1px 1px 0 #383838; }
-    .movieScreen .wrapper .movieInfo {
-      padding: 20px 20px; }
-      .movieScreen .wrapper .movieInfo h2.movieTitle {
-        clear: both;
-        padding-top: 6px;
-        font-weight: 200;
-        width: 100%;
-        float: left; }
-      .movieScreen .wrapper .movieInfo .released {
-        float: left;
-        font-size: 1.1em; }
-      .movieScreen .wrapper .movieInfo .runtime {
-        float: right;
-        font-size: 1.1em;
-        padding-left: 20px; }
-      .movieScreen .wrapper .movieInfo .right {
-        float: right; }
-        .movieScreen .wrapper .movieInfo .right .movieYear {
-          padding-left: 10px;
-          float: right;
-          font-size: 1.4em;
-          font-weight: 100; }
-      .movieScreen .wrapper .movieInfo .genre {
-        float: left;
-        color: #8B4513; }
-      .movieScreen .wrapper .movieInfo .movieDescription {
-        clear: both;
-        font-size: 1.3em;
-        line-height: 1.35em;
-        padding-top: 10px;
-        padding-bottom: 20px; }
-      .movieScreen .wrapper .movieInfo .actors {
-        clear: both;
-        padding-top: 20px; }
-        .movieScreen .wrapper .movieInfo .actors h3 {
-          font-size: 1.4em; }
-  .movieScreen h1 {
-    color: #fff; }
+            width: 100%;
+            text-align: center;
+            line-height: 0;
+            font-size: 0.9em;
+            margin-top: 14px; }
+
+.bar-dark .right-buttons .ion-android-star {
+  color: #89867C; }
+  .bar-dark .right-buttons .ion-android-star.shortlist-true {
+    color: #CDB15A; }
 
 .view {
   background: url('../img/Sci-FiGenre.png') no-repeat;
@@ -7960,27 +7901,27 @@ a.button {
     color: #fff;
     font-weight: 500; }
 
-.listContent .card {
+.card {
   word-wrap: break-word;
   background: transparent;
   margin: 10px 10px 20px;
   position: relative !important; }
-  .listContent .card .header {
+  .card .header {
     padding: 16px 10px;
     background: rgba(26, 51, 77, 0.5);
     border: 0; }
-    .listContent .card .header h2 {
+    .card .header h2 {
       color: #fff;
       font-size: 1.5em; }
-    .listContent .card .header p {
+    .card .header p {
       color: rgba(158, 166, 168, 0.9);
       font-size: 1em; }
-  .listContent .card .item-body {
+  .card .item-body {
     background: transparent;
     padding: 0;
     padding-bottom: 10px;
     border: 0; }
-    .listContent .card .item-body .movieDetails {
+    .card .item-body .movieDetails {
       color: #fff;
       font-size: 0.8em;
       position: relative;
@@ -7988,32 +7929,39 @@ a.button {
       height: 100%;
       width: 100%;
       float: left; }
-      .listContent .card .item-body .movieDetails ul {
+      .card .item-body .movieDetails ul {
         width: 60%;
         padding: 16px;
         padding-right: 10px;
         padding-left: 8px; }
-        .listContent .card .item-body .movieDetails ul li span {
+        .card .item-body .movieDetails ul li span {
           text-align: right;
           word-wrap: break-word;
           width: 50%;
           float: right; }
-        .listContent .card .item-body .movieDetails ul.bottom {
+        .card .item-body .movieDetails ul.bottom {
           bottom: 0;
           position: absolute; }
-      .listContent .card .item-body .movieDetails .poster {
+      .card .item-body .movieDetails .poster {
         margin-top: 1px;
         float: right;
         height: auto;
         width: 40%;
         clear: both;
         opacity: .6; }
-    .listContent .card .item-body .description {
+    .card .item-body .description {
+      overflow-y: hidden;
+      text-overflow: ellipsis;
       background: rgba(255, 255, 255, 0.9);
       padding: 4px 10px 22px;
+      margin-bottom: 10px;
       clear: both; }
-      .listContent .card .item-body .description .cast {
+      .card .item-body .description .cast {
         font-weight: 900; }
+      .card .item-body .description p {
+        max-height: 80px; }
+      .card .item-body .description hr {
+        margin: 20px 10%; }
 
 p, h1, h2, h3, span, ul, li, a, div {
   font-family: 'Exo 2'; }

@@ -108,8 +108,10 @@
             } else {
                 shortlistedMovies.put(movieTitle, {'shortlisted': true});
                 jQuery('.shortlistMessage').addClass('shortlisted');
+                setTimeout(function () {
+                    jQuery('.shortlistMessage').removeClass('shortlisted');
+                }, 2000);
             }
-            console.log(shortlistedMovies.get(movieTitle));
         };
 
         vm.isMovieShortlisted = function (movieTitle) {
@@ -119,6 +121,21 @@
             } else {
                 return false;
             }
+        };
+
+        vm.convertSentenceToParagraphs = function (sentence) {
+            console.log(sentence);
+            var shortSentence = '<p>';
+            var sentenceArray = sentence.split('.');
+            for (var i = 0; i < sentenceArray.length - 1; i++) {
+                console.log(sentenceArray[i].length);
+                shortSentence += sentenceArray[i];
+                if (sentenceArray[i].length > 60) {
+                    shortSentence += ".</p><p>";
+                }
+            }
+            console.log('length', shortSentence.length);
+            return shortSentence.length > 1 ? shortSentence + '.</p>' : sentence;
         };
 
         this.initialise();
