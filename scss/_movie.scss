@@ -2,164 +2,85 @@
   background: transparent;
 }
 
-.bar-dark .button.button-icon.ion-android-star {
-  color: #525252;
 
-  &.shortlist-true {
-    color: #ffffff;
-  }
-}
 
 .movieScreen {
-  margin-top: -45px;
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-
-  .wrapper {
-    height: 100%;
     width: 100%;
-    background: #fff;
-    .movieArt {
-      width: 100%;
-      height: 65%;
-      background-size: cover;
-      background-position: center;
-      .overlay {
-        height: 100%;
-        width: 100%;
-        background: rgba(000, 000, 000, 0.4);
+    height: 100%;
+    background: url('../img/Sci-FiGenre.png') no-repeat !important;
+  .card {
+    margin: 0;
+
+    .item-body {
+      overflow: hidden;
+
+      .description {
+        overflow-y: auto;
         position: relative;
-        .trailerButtonWrapper {
-          display: none;
-          width: 100%;
-          height: 68px;
-          position: relative;
-          top: 50%;
+        padding: 10px 20px 40px;
+        text-align: justify;
+
+        .castWrapper {
           text-align: center;
-          .icon.ion-play {
-            padding: 6px 10px;
-          }
-          .button.button-positive {
-            border-color: #fff;
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border-radius: 10%;
-          }
         }
-        .shortlistMessage {
-          background: rgba(000, 000, 000, .7);
-          position: absolute;
-          height: 62px;
-          width: 106px;
-          text-align: right;
-          bottom: 0;
-          left: 0;
-          color: #fff;
-          font-size: 1.3em;
-          opacity: 1;
-          padding: 10px;
-          margin-left: -106px;
-          transition: all .3s linear;
-          &.shortlisted {
-            margin-left: 0;
-          }
-        }
-        .movieRatings {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          color: #fff;
-          padding: 10px;
-          .imdb {
-            width: 200px;
-            margin: 0 auto;
-            img {
-              margin-left: -100px;
-              float:right;
-            }
-            .imdbRating {
-              margin-left:60px;
-              text-align: center;
-              float: left;
-              width: 200px;
-              margin-top: -44px;
-              font-weight: 300;
-              font-size: 4em;
-              opacity: .9;
-              text-shadow:
-                -1px -1px 0 #383838,
-                1px -1px 0 #383838,
-                -1px 1px 0 #383838,
-                1px 1px 0 #383838;
-            }
-          }
-        }
-      }
 
-    }
-    .movieInfo {
-      padding: 20px 20px;
-
-      h2.movieTitle {
-        clear: both;
-        padding-top: 6px;
-        font-weight: 200;
-        width: 100%;
-        float: left;
-      }
-
-      .released {
-        float: left;
-        font-size:1.1em;
-      }
-      .runtime {
-        float: right;
-        font-size: 1.1em;
-        padding-left: 20px;
-      }
-
-      .right {
-        float: right;
-        .movieYear {
-          padding-left: 10px;
-          float: right;
-          font-size: 1.4em;
-          font-weight: 100;
-        }
-        .movieAgeRating {
-        }
-      }
-
-      .genre {
-        float: left;
-        color: $lightBrown;
-      }
-      .movieDescription {
-        clear: both;
-        font-size: 1.3em;
-        line-height: 1.35em;
-        padding-top: 10px;
-        padding-bottom: 20px;
-      }
-
-      .actors {
         h3 {
-          font-size: 1.4em;
+          text-align: center;
+          font-weight: 100;
+          font-size: 1em;
+          color: #414141;
+          text-transform: uppercase;
+          font-family: Georgia, ‘Times New Roman’, Times, serif;
         }
-        clear: both;
-        padding-top: 20px;
+        p {
+          max-height: 100%;
+        }
+
+        hr {
+          border: 0;
+          height: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .shortlistMessage {
+          position: absolute;
+          height: 30px;
+          width: 160px;
+          background: #2f2f2f;
+          color: #fff;
+          border-radius: 20px 20px;
+          opacity: 0;
+          top: 50%;
+          left: 50%;
+          margin-left: -80px;
+          transition: opacity 0.8s ease;
+
+          &.shortlisted {
+            opacity: 0.6;
+          }
+          p {
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            line-height: 0;
+            font-size: 0.9em;
+            margin-top: 14px;
+          }
+        }
       }
     }
   }
-
-  h1 {
-    color: #fff;
-  }
-
-
-
-
-
-
 }
+
+.bar-dark {
+  .right-buttons {
+    .ion-android-star{
+      color: #89867C;
+      &.shortlist-true {
+        color: #CDB15A
+      }
+    }
+  }
+}
+

@@ -22,8 +22,9 @@
                         </ul>
                     </div>
                     <div class="description">
-                        <p>{{movie.description}}</p>
-                        <p><span class="cast">Cast: </span>{{ movie.actors }}</p>
+                        <p ng-show="movie.actors"><span class="cast">Cast: </span>{{ movie.actors }}</p>
+                        <hr/>
+                        <p ng-show="movie.description">{{ movie.description}}</p>
                     </div>
 
                 </div>

@@ -1,54 +1,39 @@
-<ion-view ng-controller="MovieController as vm" title="">
-    <ion-nav-buttons side="right">
-        <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}" ng-click="vm.toggleShortlistedMovie(vm.movie.title)"></button>
-    </ion-nav-buttons>
-    <ion-content ng-show="vm.movie" class="movieScreen"
+<ion-view ng-controller="MovieController as vm" title="" class="movieScreen">
+    <ion-content ng-show="vm.movie" class="mainOverlay"
                  scroll="true"
                  overflow-scroll="true"
                  on-swipe-right="vm.swipeRight()"
                  on-swipe-left="vm.swipeLeft()">
-        <div class="wrapper">
-            <div class="movieArt" style="background-image: url('{{vm.movie.poster}}')">
-                <div class="overlay">
-                    <div class="trailerButtonWrapper">
-                        <button class="button button-large button-positive icon ion-play"></button>
-                    </div>
-                    <div class="shortlistMessage">
-                        <p>Added to watchlist.</p>
-                    </div>
-                    <div class="movieRatings">
-                        <div class="imdb">
-                            <img src="img/imdbLogo.png" height="36" width="75"/>
-                            <span class="imdbRating">{{ vm.movie.imdbRating }}</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="card">
+            <div class="item header">
+                <h2>{{vm.movie.title}}</h2>
+                <p>{{vm.movie.genre}}</p>
             </div>
-            <div class="movieInfo">
-                <div class="right">
-                    <span class="movieYear">{{ vm.movie.year }}</span>
-                    <span class="movieAgeRating">{{ vm.movie.rated }}</span>
+            <div class="item item-body">
+                <div class="movieDetails">
+                    <img class="poster" src="{{vm.movie.poster}}">
+                    <ul>
+                        <li ng-show="vm.movie.imdbRating">IMDB Rating: <span>{{vm.movie.imdbRating }}</span></li>
+                        <li ng-show="vm.movie.metascore">Metascore: <span>{{ vm.movie.metascore }}</span></li>
+                    </ul>
+                    <ul class="bottom">
+                        <li ng-show="vm.movie.runtime">Runtime: <span>{{ vm.movie.runtime }}</span></li>
+                        <li ng-show="vm.movie.rated">Rated: <span>{{ vm.movie.rated }}</span></li>
+                        <li ng-show="vm.movie.released">Released: <span>{{ vm.movie.released }}</span></li>
+                        <li ng-show="vm.movie.director">Directed by: <span>{{ vm.movie.director }}</span></li>
+                    </ul>
                 </div>
-                <span ng-show="vm.movie.genre" class="genre">{{ vm.movie.genre }}</span>
-
-                <div class="movieTitle">
-                    <h2 class="movieTitle">{{ vm.movie.title }}</h2>
+                <div class="description">
+                    <div class="shortlistMessage">
+                        <p>Added to watchlist</p>
+                    </div>
+                    <p ng-show="vm.movie.description">{{vm.movie.description}}</p>
+                    <p ng-show="vm.movie.actors"><span class="cast">Cast: </span>{{ vm.movie.actors }}</p>
                 </div>
-
-                <p class="movieDescription">{{ vm.movie.description }}</p>
-                <div class="released">
-                    <span>Released: {{ vm.movie.released }}</span>
-                </div>
-                <div class="runtime">
-                    <i class="icon ion-clock"></i>
-                    <span>{{ vm.movie.runtime }}</span>
-                </div>
-                <div ng-show="vm.movie.actors" class="actors">
-                    <h3>Cast:</h3>
-                    <p>{{ vm.movie.actors }}</p>
+                <div class="button button-large button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}"
+                     ng-click="vm.toggleShortlistedMovie(vm.movie.title)">
                 </div>
             </div>
         </div>
-
     </ion-content>
 </ion-view>
