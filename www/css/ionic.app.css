@@ -7814,12 +7814,12 @@ a.button {
           color: #fff;
           border-radius: 20px 20px;
           opacity: 0;
-          top: 50%;
+          top: 20%;
           left: 50%;
           margin-left: -80px;
           transition: opacity 0.8s ease; }
           .movieScreen .card .item-body .description .shortlistMessage.shortlisted {
-            opacity: 0.6; }
+            opacity: 0.8; }
           .movieScreen .card .item-body .description .shortlistMessage p {
             color: #fff;
             width: 100%;
@@ -7951,17 +7951,20 @@ a.button {
         opacity: .6; }
     .card .item-body .description {
       overflow-y: hidden;
-      text-overflow: ellipsis;
       background: rgba(255, 255, 255, 0.9);
       padding: 4px 10px 22px;
       margin-bottom: 10px;
-      clear: both; }
+      clear: both;
+      text-align: center; }
       .card .item-body .description .cast {
         font-weight: 900; }
       .card .item-body .description p {
         max-height: 80px; }
       .card .item-body .description hr {
         margin: 20px 10%; }
+
+.listWrapper .list:last-child {
+  margin-bottom: 30px; }
 
 p, h1, h2, h3, span, ul, li, a, div {
   font-family: 'Exo 2'; }

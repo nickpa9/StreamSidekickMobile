@@ -33,9 +33,11 @@
                     <div class="shortlistMessage">
                         <p>Added to watchlist</p>
                     </div>
-                    <p class="castWrapper" ng-show="vm.movie.actors"><span class="cast">Cast: </span>{{ vm.movie.actors }}</p>
-                    <div ng-show="vm.movie.description">
+                    <div ng-show="vm.movie.actors">
+                        <p class="castWrapper"><span class="cast">Cast: </span>{{ vm.movie.actors }}</p>
                         <hr/>
+                    </div>
+                    <div ng-show="vm.movie.description">
                         <h3 class="plot">Plot</h3>
                         <p ng-bind-html="vm.convertSentenceToParagraphs(vm.movie.description)"></p>
                     </div>

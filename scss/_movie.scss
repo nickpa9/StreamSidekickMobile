@@ -51,13 +51,13 @@
           color: #fff;
           border-radius: 20px 20px;
           opacity: 0;
-          top: 50%;
+          top: 20%;
           left: 50%;
           margin-left: -80px;
           transition: opacity 0.8s ease;
 
           &.shortlisted {
-            opacity: 0.6;
+            opacity: 0.8;
           }
           p {
             color: #fff;

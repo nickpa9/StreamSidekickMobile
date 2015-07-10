@@ -135,7 +135,7 @@
                 }
             }
             console.log('length', shortSentence.length);
-            return shortSentence.length > 1 ? shortSentence + '.</p>' : sentence;
+            return shortSentence.length > 1 ? shortSentence + '</p>' : sentence;
         };
 
         this.initialise();
