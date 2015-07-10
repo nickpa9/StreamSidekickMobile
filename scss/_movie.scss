@@ -14,6 +14,35 @@
     .item-body {
       overflow: hidden;
 
+      .posterArt {
+        float: right;
+        width: 40%;
+        position: relative;
+        min-height: 200px;
+        max-height: 221px;
+
+        a {
+          height: 100%;
+          width: 100%;
+          display: block;
+        }
+        .poster {
+          height: auto;
+          width: 100%;
+          margin-top: 1px;
+          opacity: .6;
+        }
+
+        .videoIcon {
+          top: 25%;
+          left: 50%;
+          right: 50%;
+          color: white;
+          position: absolute;
+          background: url('../img/videoIcon.png') no-repeat;
+        }
+      }
+
       .description {
         overflow-y: auto;
         position: relative;

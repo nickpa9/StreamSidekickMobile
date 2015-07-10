@@ -17,7 +17,12 @@
             <div class="item item-body">
                 <div class="scrollable">
                 <div class="movieDetails">
-                    <img class="poster" src="{{vm.movie.poster}}">
+                    <div class="posterArt">
+                        <a href="#" ng-click="vm.goToYoutubeVideo()">
+                            <img class="poster" src="{{vm.movie.poster}}">
+                            <div class="videoIcon" ng-show="vm.movie.trailers"></div>
+                        </a>
+                    </div>
                     <ul>
                         <li ng-show="vm.movie.imdbRating">IMDB Rating: <span>{{vm.movie.imdbRating }}</span></li>
                         <li ng-show="vm.movie.metascore">Metascore: <span>{{ vm.movie.metascore }}</span></li>

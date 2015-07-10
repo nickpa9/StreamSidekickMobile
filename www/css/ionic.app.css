@@ -7785,6 +7785,28 @@ a.button {
     margin: 0; }
     .movieScreen .card .item-body {
       overflow: hidden; }
+      .movieScreen .card .item-body .posterArt {
+        float: right;
+        width: 40%;
+        position: relative;
+        min-height: 200px;
+        max-height: 221px; }
+        .movieScreen .card .item-body .posterArt a {
+          height: 100%;
+          width: 100%;
+          display: block; }
+        .movieScreen .card .item-body .posterArt .poster {
+          height: auto;
+          width: 100%;
+          margin-top: 1px;
+          opacity: .6; }
+        .movieScreen .card .item-body .posterArt .videoIcon {
+          top: 25%;
+          left: 50%;
+          right: 50%;
+          color: white;
+          position: absolute;
+          background: url('../img/videoIcon.png') no-repeat; }
       .movieScreen .card .item-body .description {
         overflow-y: auto;
         position: relative;
@@ -7942,13 +7964,27 @@ a.button {
         .card .item-body .movieDetails ul.bottom {
           bottom: 0;
           position: absolute; }
-      .card .item-body .movieDetails .poster {
-        margin-top: 1px;
+      .card .item-body .movieDetails .posterArt {
         float: right;
-        height: auto;
         width: 40%;
-        clear: both;
-        opacity: .6; }
+        position: relative;
+        min-height: 200px;
+        max-height: 221px; }
+        .card .item-body .movieDetails .posterArt .poster {
+          height: auto;
+          width: 100%;
+          margin-top: 1px;
+          opacity: .6; }
+        .card .item-body .movieDetails .posterArt .videoIcon {
+          top: 50%;
+          left: 50%;
+          height: 40px;
+          width: 40px;
+          margin-top: -20px;
+          margin-left: -20px;
+          opacity: .6;
+          position: absolute;
+          background: url('../img/videoIcon.png') no-repeat; }
     .card .item-body .description {
       overflow-y: hidden;
       background: rgba(255, 255, 255, 0.9);

@@ -30,6 +30,8 @@
             if ($stateParams.movieName) {
                 moviesApi.getMovieDataByTitle(movieName).then(function (response) {
                     vm.movie = response;
+                    vm.movie.movieTrailer = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
+                    console.log(vm.movie);
                 }).finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
                     vm.cleanUpResults();
@@ -37,6 +39,13 @@
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());
             }
+        };
+
+        vm.goToYoutubeVideo = function () {
+            var youtubeVideo = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
+            console.log(youtubeVideo);
+            window.open(youtubeVideo, '_system');
+            return false;
         };
 
         vm.cleanUpResults = function () {
@@ -124,17 +133,14 @@
         };
 
         vm.convertSentenceToParagraphs = function (sentence) {
-            console.log(sentence);
             var shortSentence = '<p>';
             var sentenceArray = sentence.split('.');
             for (var i = 0; i < sentenceArray.length - 1; i++) {
-                console.log(sentenceArray[i].length);
                 shortSentence += sentenceArray[i];
                 if (sentenceArray[i].length > 60) {
                     shortSentence += ".</p><p>";
                 }
             }
-            console.log('length', shortSentence.length);
             return shortSentence.length > 1 ? shortSentence + '</p>' : sentence;
         };
 

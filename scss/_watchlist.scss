@@ -47,14 +47,34 @@
           position: absolute;
         }
       }
-      .poster {
-        margin-top: 1px;
+
+      .posterArt {
         float: right;
-        height: auto;
         width: 40%;
-        clear: both;
-        opacity: .6;
+        position: relative;
+        min-height: 200px;
+        max-height: 221px;
+
+        .poster {
+          height: auto;
+          width: 100%;
+          margin-top: 1px;
+          opacity: .6;
+        }
+
+        .videoIcon {
+          top: 50%;
+          left: 50%;
+          height: 40px;
+          width:  40px;
+          margin-top: -20px;
+          margin-left: -20px;
+          opacity: .6;
+          position: absolute;
+          background: url('../img/videoIcon.png') no-repeat;
+        }
       }
+
     }
 
     .description {
