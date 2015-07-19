@@ -1,13 +1,14 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('RecentlyAddedMovieController', ['$stateParams', '$state', '$scope', 'moviesApi', RecentlyAddedMovieController]);
+    angular.module('movieApp').controller('RecentlyAddedMovieController', ['$stateParams', '$state', '$scope', 'moviesApi', 'CacheFactory', RecentlyAddedMovieController]);
 
-    function RecentlyAddedMovieController($stateParams, $state, $scope, moviesApi) {
+    function RecentlyAddedMovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
         var vm = this;
-        var isTop10List = false;
         var movieName = $stateParams.movieName;
         var recentlyAddedMovieCount;
+        var shortlistedMovies = CacheFactory.get('shortlistedMovies');
+
 
         this.initialise = function () {
             moviesApi.getRecentlyAddedMoviesCount().then(function (response) {
@@ -31,6 +32,13 @@
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());
             }
+        };
+
+        vm.goToYoutubeVideo = function () {
+            var youtubeVideo = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
+            console.log(youtubeVideo);
+            window.open(youtubeVideo, '_system');
+            return false;
         };
 
         vm.cleanUpResults = function () {
@@ -103,6 +111,18 @@
             } else {
                 return false;
             }
+        };
+
+        vm.convertSentenceToParagraphs = function (sentence) {
+            var shortSentence = '<p>';
+            var sentenceArray = sentence.split('.');
+            for (var i = 0; i < sentenceArray.length - 1; i++) {
+                shortSentence += sentenceArray[i];
+                if (sentenceArray[i].length > 60) {
+                    shortSentence += ".</p><p>";
+                }
+            }
+            return shortSentence.length > 1 ? shortSentence + '</p>' : sentence;
         };
 
         this.initialise();

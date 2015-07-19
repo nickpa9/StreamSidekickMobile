@@ -1,5 +1,10 @@
-<ion-view ng-controller="MovieController as vm" title="" class="movieScreen">
-    <ion-content ng-show="vm.movie" class="mainOverlay"
+<ion-view ng-controller="RecentlyAddedMovieController as vm" title="" class="movieScreen">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}"
+                ng-click="vm.toggleShortlistedMovie(vm.movie.title)">
+        </button>
+    </ion-nav-buttons>
+    <ion-content ng-show="vm.movie" class="ng-cloak mainOverlay"
                  scroll="true"
                  overflow-scroll="true"
                  on-swipe-right="vm.swipeRight()"
@@ -10,28 +15,39 @@
                 <p>{{vm.movie.genre}}</p>
             </div>
             <div class="item item-body">
-                <div class="movieDetails">
-                    <img class="poster" src="{{vm.movie.poster}}">
-                    <ul>
-                        <li ng-show="vm.movie.imdbRating">IMDB Rating: <span>{{vm.movie.imdbRating }}</span></li>
-                        <li ng-show="vm.movie.metascore">Metascore: <span>{{ vm.movie.metascore }}</span></li>
-                    </ul>
-                    <ul class="bottom">
-                        <li ng-show="vm.movie.runtime">Runtime: <span>{{ vm.movie.runtime }}</span></li>
-                        <li ng-show="vm.movie.rated">Rated: <span>{{ vm.movie.rated }}</span></li>
-                        <li ng-show="vm.movie.released">Released: <span>{{ vm.movie.released }}</span></li>
-                        <li ng-show="vm.movie.director">Directed by: <span>{{ vm.movie.director }}</span></li>
-                    </ul>
-                </div>
-                <div class="description">
-                    <div class="shortlistMessage">
-                        <p>Added to watchlist</p>
+                <div class="scrollable">
+                    <div class="movieDetails">
+                        <div class="posterArt">
+                            <a href="#" ng-click="vm.goToYoutubeVideo()">
+                                <img class="poster" src="{{vm.movie.poster}}">
+                                <div class="videoIcon" ng-show="vm.movie.trailers"></div>
+                            </a>
+                        </div>
+                        <ul>
+                            <li ng-show="vm.movie.imdbRating">IMDB Rating: <span>{{vm.movie.imdbRating }}</span></li>
+                            <li ng-show="vm.movie.metascore">Metascore: <span>{{ vm.movie.metascore }}</span></li>
+                        </ul>
+                        <ul class="bottom">
+                            <li ng-show="vm.movie.runtime">Runtime: <span>{{ vm.movie.runtime }}</span></li>
+                            <li ng-show="vm.movie.rated">Rated: <span>{{ vm.movie.rated }}</span></li>
+                            <li ng-show="vm.movie.released">Released: <span>{{ vm.movie.released }}</span></li>
+                            <li ng-show="vm.movie.director">Directed by: <span>{{ vm.movie.director }}</span></li>
+                        </ul>
                     </div>
-                    <p ng-show="vm.movie.description">{{vm.movie.description}}</p>
-                    <p ng-show="vm.movie.actors"><span class="cast">Cast: </span>{{ vm.movie.actors }}</p>
-                </div>
-                <div class="button button-large button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}"
-                     ng-click="vm.toggleShortlistedMovie(vm.movie.title)">
+                    <div class="description">
+                        <div class="shortlistMessage">
+                            <p>Added to watchlist</p>
+                        </div>
+                        <div ng-show="vm.movie.actors">
+                            <p class="castWrapper"><span class="cast">Cast: </span>{{ vm.movie.actors }}</p>
+                            <hr/>
+                        </div>
+                        <div ng-show="vm.movie.description">
+                            <h3 class="plot">Plot</h3>
+                            <p ng-bind-html="vm.convertSentenceToParagraphs(vm.movie.description)"></p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
