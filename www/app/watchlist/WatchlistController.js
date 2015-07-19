@@ -1,13 +1,15 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('WatchlistController', ['$state', 'moviesApi', 'CacheFactory', WatchlistController]);
+    angular.module('movieApp').controller('WatchlistController', ['moviesApi', 'CacheFactory', WatchlistController]);
 
-    function WatchlistController($state, moviesApi, CacheFactory) {
+    function WatchlistController(moviesApi, CacheFactory) {
 
         var vm = this;
         var shortlistedMovies;
         vm.movies = [];
+        var shortlistedMoviesCache = CacheFactory.get('shortlistedMovies');
+
 
 
         vm.initialize = function () {
@@ -31,6 +33,14 @@
                         vm.movies.push(response);
                     })
             });
+        };
+
+        vm.removeFromWatchlist = function (movie, event) {
+            $(event.target).closest('.card').addClass('cardRemoved');
+            setTimeout(function () {
+                $(event.target).closest('.card').css({'height': '0', 'margin': '0'});
+            }, 600);
+            shortlistedMoviesCache.remove(movie.title);
         };
 
         vm.initialize();

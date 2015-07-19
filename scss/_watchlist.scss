@@ -3,6 +3,11 @@
   background: transparent;
   margin: 10px 10px 20px;
   position: relative !important;
+  transition: all 0.4s ease-in;
+  display: block;
+  &.cardRemoved {
+    transform: translate(1000px);
+  }
   .header {
     padding: 16px 10px;
     background: rgba(26, 51, 77, .5);
@@ -52,8 +57,11 @@
         float: right;
         width: 40%;
         position: relative;
-        min-height: 200px;
-        max-height: 221px;
+        height: 200px;
+
+        a img.poster {
+          height: 200px;
+        }
 
         .poster {
           height: auto;
@@ -69,7 +77,7 @@
           width:  40px;
           margin-top: -20px;
           margin-left: -20px;
-          opacity: .6;
+          opacity: .8;
           position: absolute;
           background: url('../img/videoIcon.png') no-repeat;
         }

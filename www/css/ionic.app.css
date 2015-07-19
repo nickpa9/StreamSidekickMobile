@@ -7927,7 +7927,11 @@ a.button {
   word-wrap: break-word;
   background: transparent;
   margin: 10px 10px 20px;
-  position: relative !important; }
+  position: relative !important;
+  transition: all 0.4s ease-in;
+  display: block; }
+  .card.cardRemoved {
+    transform: translate(1000px); }
   .card .header {
     padding: 16px 10px;
     background: rgba(26, 51, 77, 0.5);
@@ -7968,8 +7972,9 @@ a.button {
         float: right;
         width: 40%;
         position: relative;
-        min-height: 200px;
-        max-height: 221px; }
+        height: 200px; }
+        .card .item-body .movieDetails .posterArt a img.poster {
+          height: 200px; }
         .card .item-body .movieDetails .posterArt .poster {
           height: auto;
           width: 100%;
@@ -7982,7 +7987,7 @@ a.button {
           width: 40px;
           margin-top: -20px;
           margin-left: -20px;
-          opacity: .6;
+          opacity: .8;
           position: absolute;
           background: url('../img/videoIcon.png') no-repeat; }
     .card .item-body .description {
