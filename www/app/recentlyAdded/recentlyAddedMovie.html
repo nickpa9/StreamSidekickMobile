@@ -1,7 +1,7 @@
 <ion-view ng-controller="RecentlyAddedMovieController as vm" title="" class="movieScreen">
     <ion-nav-buttons side="right">
-        <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.title)}}"
-                ng-click="vm.toggleShortlistedMovie(vm.movie.title)">
+        <button class="button button-icon ion-android-star shortlist-{{vm.isMovieShortlisted(vm.movie.imdbId)}}"
+                ng-click="vm.toggleShortlistedMovie(vm.movie.imdbId)">
         </button>
     </ion-nav-buttons>
     <ion-content ng-show="vm.movie" class="ng-cloak mainOverlay"
@@ -19,7 +19,7 @@
                     <div class="movieDetails">
                         <div class="posterArt">
                             <a href="#" ng-click="vm.goToYoutubeVideo()">
-                                <img class="poster" src="{{vm.movie.poster}}">
+                                <img class="poster" ng-src="{{vm.movie.poster}}">
                                 <div class="videoIcon" ng-show="vm.movie.trailers"></div>
                             </a>
                         </div>

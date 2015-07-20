@@ -27,8 +27,8 @@
         };
 
         vm.loadInitialMovie = function () {
-            if ($stateParams.movieName) {
-                moviesApi.getMovieDataByTitle(movieName).then(function (response) {
+            if ($stateParams.imdbId) {
+                moviesApi.getMovieDataByImdbId($stateParams.imdbId).then(function (response) {
                     vm.movie = response;
                     vm.movie.movieTrailer = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
                     console.log(vm.movie);
@@ -43,7 +43,6 @@
 
         vm.goToYoutubeVideo = function () {
             var youtubeVideo = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
-            console.log(youtubeVideo);
             window.open(youtubeVideo, '_system');
             return false;
         };
@@ -67,7 +66,8 @@
                 $state.go('home.movie', {
                     "movieName": nextMovie.title,
                     "rank": currentMovieRank,
-                    "previousTitle": movieName
+                    "previousTitle": movieName,
+                    "imdbId": nextMovie.imdbId
                 });
             });
         };
@@ -77,7 +77,8 @@
                 $state.go('home.movie', {
                     "movieName": movie.title,
                     "rank": previousMovieIndex,
-                    "previousTitle": movieName
+                    "previousTitle": movieName,
+                    "imdbId": movie.imdbId
                 });
             });
         };
@@ -86,7 +87,8 @@
             moviesApi.getMovieDataByTitle(previousMovieTitle).then(function (movie) {
                 $state.go('home.movie', {
                     "movieName": movie.title,
-                    "previousTitle": movieName
+                    "previousTitle": movieName,
+                    "imdbId": movie.imdbId
                 });
             });
         };

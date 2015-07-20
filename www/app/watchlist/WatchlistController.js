@@ -27,7 +27,8 @@
 
         vm.getMoviesData = function () {
             shortlistedMovies.forEach(function (movie) {
-                moviesApi.getMovieDataByTitle(movie)
+                console.log(movie);
+                moviesApi.getMovieDataByImdbId(movie)
                     .then(function (response) {
                         console.log(response);
                         vm.movies.push(response);
@@ -40,7 +41,7 @@
             setTimeout(function () {
                 $(event.target).closest('.card').css({'height': '0', 'margin': '0'});
             }, 600);
-            shortlistedMoviesCache.remove(movie.title);
+            shortlistedMoviesCache.remove(movie.imdbId);
         };
 
         vm.initialize();

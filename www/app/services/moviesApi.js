@@ -12,21 +12,28 @@
     self.genreMovies = CacheFactory.get('genreMovies');
     self.recentlyAddedMovies = CacheFactory.get('recentlyAddedMovies');
 
-    this.movies = getMovies();
+    this.movies = this.movies || [];
 
     function getMovies () {
+      var deferred = $q.defer();
+
       $http.get(apiHost + '/api/amazonPrime/movies/')
-          .success(function (data, status) {
-            if (status === 200) {
-              data.forEach(function (movie) {
-                self.moviesCache.put(movie.title, movie);
-              });
-              return data;
-            } else {
-              console.log(status, data);
-              return false;
+      .success(function (data, status) {
+        if (status === 200) {
+          data.forEach(function (movie) {
+            if (!self.moviesCache.get(movie.imdbId)) {
+              self.moviesCache.put(movie.imdbId, movie);
             }
+          });
+          deferred.resolve(data);
+        } else {
+          deferred.reject(status);
+        }
+      })
+      .error(function (err) {
+        deferred.reject(err);
       });
+      return deferred.promise;
     }
 
     function getTop10Movies() {
@@ -71,15 +78,13 @@
     function getRecentlyAddedMovies() {
       var deferred = $q.defer(),
           recentlyAddedMovies = self.recentlyAddedMovies.get('recentlyReleased');
-
-      console.log(recentlyAddedMovies);
       if (recentlyAddedMovies) {
         deferred.resolve(recentlyAddedMovies);
       } else {
         $http.get(apiHost + '/api/amazonPrime/movies/recentlyAdded')
           .success(function (data, status) {
             self.recentlyAddedMovies.put('recentlyReleased', data);
-              deferred.resolve(data);
+            deferred.resolve(data);
           })
           .error(function (err) {
               deferred.reject(err);
@@ -127,6 +132,12 @@
       });
     }
 
+    function getMovieByImdbId(movieImdbId) {
+      return _.find(movies.top10Movies.movies, function (movie) {
+        return movie.movieImdbId === parseInt(movieImdbId);
+      });
+    }
+
     function getMovieByIndex(index) {
       var deferred = $q.defer();
       getTop10Movies().then(function (response) {
@@ -147,17 +158,53 @@
       return deferred.promise;
     }
 
+    function getMovieDataByImdbId(imdbId) {
+      var deferred = $q.defer(),
+          movieData = self.moviesCache.get(imdbId);
+      if (movieData) {
+        deferred.resolve(movieData);
+      } else {
+        getMovies().then(function (data) {
+          if (data.length > 0) {
+            deferred.resolve(getMovieByImdbId(data));
+          }
+        });
+        deferred.reject('no movie found');
+      }
+      return deferred.promise;
+    }
+
+    function getAllMovieData() {
+      var _this = this;
+      if (!self.moviesCache || !self.topRatedMovies || !self.genreMovies || !self.recentlyAddedMovies) {
+        setTimeout(function () {
+          getAllMovieData();
+          console.log('trying again');
+        }, 200);
+      } else {
+        getRecentlyAddedMovies();
+        getTop10Movies();
+        getMovies().then(function (data) {
+          console.log('got movies', data);
+          _this.movies = data;
+        });
+      }
+    }
+
     return {
       getTop10Movies: getTop10Movies,
       getMovieById: getMovieById,
+      getMovieByImdbId: getMovieByImdbId,
       getMovieByIndex: getMovieByIndex,
       getMovieDataByTitle: getMovieDataByTitle,
+      getMovieDataByImdbId: getMovieDataByImdbId,
       getMoviesByGenre: getMoviesByGenre,
       getMovieByGenreAndIndex: getMovieByGenreAndIndex,
       getGenreMoviesCount: getGenreMoviesCount,
       getRecentlyAddedMovies: getRecentlyAddedMovies,
       getRecentlyAddedMoviesCount: getRecentlyAddedMoviesCount,
-      getRecentlyAddedMovieByIndex: getRecentlyAddedMovieByIndex
+      getRecentlyAddedMovieByIndex: getRecentlyAddedMovieByIndex,
+      getAllMovieData: getAllMovieData
     };
   }
 })();

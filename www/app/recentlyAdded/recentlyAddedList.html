@@ -1,23 +1,23 @@
 <ion-view ng-controller="RecentlyAddedListController as vm" title="Newly Released" class="listWrapper">
     <ion-content has-bouncing="true" class="mainOverlay">
         <ion-list class="list thumbnailList listContent">
-            <ion-item class="item item-thumbnail-right shortlisted-{{vm.isMovieShortlisted(movie.title)}}"
+            <ion-item class="item item-thumbnail-right shortlisted-{{vm.isMovieShortlisted(movie.imdbId)}}"
                       collection-repeat="movie in vm.movies"
                       ng-click="vm.selectMovie(movie, $index)"
-                      on-swipe-right="vm.toggleShortlisted(movie.title, true)"
-                      on-swipe-left="vm.toggleShortlisted(movie.title, false)">
-            <img class="poster" src="{{ movie.poster }}">
+                      on-swipe-right="vm.toggleShortlisted(movie.imdbId, true)"
+                      on-swipe-left="vm.toggleShortlisted(movie.imdbId, false)">
+            <img class="poster" ng-src="{{ movie.poster }}">
                 <div class="movieInfo">
                     <h2 class="movieTitle">{{ movie.title }} <span class="movieYear">{{ movie.year }}</span></h2>
                     <p class="genre">{{ movie.genre }}</p>
                 </div>
                 <div class="streamIcons shortlisted-{{vm.isMovieShortlisted(movie.title)}}">
                     <span class="shortlisted-icon"><img height="12" width="12" src="img/ratingStar.png"/></span>
-                    <span class="streamIcon"><img src="img/primeIcon.png"/></span>
+                    <span class="streamIcon"><img ng-src="img/primeIcon.png"/></span>
                 </div>
                 <div class="movieRatings">
                     <div class="imdb">
-                        <img src="img/imdbLogo.png" height="12" width="25"/>
+                        <img ng-src="img/imdbLogo.png" height="12" width="25"/>
                         <span class="imdbRating">{{ movie.imdbRating }}</span>
                     </div>
                 </div>

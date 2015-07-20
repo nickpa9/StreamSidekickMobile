@@ -37,9 +37,13 @@ p, h1, h2, h3, span, ul, li, a, div {
    font-family: 'Exo 2';
  }
 
+.list {
+  padding-top: 0px;
+}
+
 .nav-bar-block {
   .transparent-nav {
-    background: rgba(000, 000, 000, 0.8);
+    background: #04080c;
     border-bottom: 0;
 
     .title-left {

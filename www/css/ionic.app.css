@@ -7780,7 +7780,7 @@ a.button {
 .movieScreen {
   width: 100%;
   height: 100%;
-  background: url('../img/Sci-FiGenre.png') no-repeat !important; }
+  background: url('../img/Sci-FiGenre.jpg') no-repeat !important; }
   .movieScreen .card {
     margin: 0; }
     .movieScreen .card .item-body {
@@ -7898,17 +7898,17 @@ a.button {
   .genreList .item .overlay {
     margin: 0;
     padding: 0;
-    background: -moz-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: -moz-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.65)));
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.85)));
     /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: -o-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
     /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
     /* IE10+ */
-    opacity: .8;
+    opacity: 1;
     width: 100%;
     height: 100%; }
   .genreList .item h2 {
@@ -8010,8 +8010,11 @@ a.button {
 p, h1, h2, h3, span, ul, li, a, div {
   font-family: 'Exo 2'; }
 
+.list {
+  padding-top: 0px; }
+
 .nav-bar-block .transparent-nav {
-  background: rgba(0, 0, 0, 0.8);
+  background: #04080c;
   border-bottom: 0; }
   .nav-bar-block .transparent-nav .title-left {
     text-align: center;

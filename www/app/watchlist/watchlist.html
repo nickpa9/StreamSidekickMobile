@@ -2,14 +2,14 @@
     <ion-content has-bouncing="false" class="mainOverlay">
         <ion-list class="listContent list">
 
-            <div draggable="true" class="card" ng-repeat="movie in vm.movies" on-swipe-right="vm.removeFromWatchlist(movie, $event)">
+            <div draggable="true" class="card" ng-repeat="movie in vm.movies" on-swipe-left="vm.removeFromWatchlist(movie, $event)" on-swipe-right="vm.removeFromWatchlist(movie, $event)">
                 <div class="item header">
                     <h2>{{movie.title}}</h2>
                     <p>{{movie.genre}}</p>
                 </div>
                 <div class="item item-body">
                     <div class="movieDetails">
-                        <img class="posterArt" src="{{movie.poster}}">
+                        <img class="posterArt" ng-src="{{movie.poster}}">
                         <ul>
                             <li ng-show="movie.imdbRating">IMDB Rating: <span>{{movie.imdbRating }}</span></li>
                             <li ng-show="movie.metascore">Metascore: <span>{{ movie.metascore }}</span></li>

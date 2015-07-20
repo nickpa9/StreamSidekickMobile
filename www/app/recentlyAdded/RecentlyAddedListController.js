@@ -17,7 +17,8 @@
 
         vm.selectMovie = function (movie) {
             $state.go("home.recentlyAddedMovie", {
-                "movieName": movie.title
+                "movieName": movie.title,
+                "imdbId": movie.imdbId
             });
         };
 

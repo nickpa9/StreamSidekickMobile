@@ -5,7 +5,7 @@
 
     function RecentlyAddedMovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
         var vm = this;
-        var movieName = $stateParams.movieName;
+        var previousImdbId = $stateParams.previousImdbId;
         var recentlyAddedMovieCount;
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
@@ -22,8 +22,8 @@
         };
 
         vm.loadInitialMovie = function () {
-            if ($stateParams.movieName) {
-                moviesApi.getMovieDataByTitle(movieName).then(function (response) {
+            if ($stateParams.imdbId) {
+                moviesApi.getMovieDataByImdbId($stateParams.imdbId).then(function (response) {
                     vm.movie = response;
                 }).finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
@@ -36,7 +36,6 @@
 
         vm.goToYoutubeVideo = function () {
             var youtubeVideo = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
-            console.log(youtubeVideo);
             window.open(youtubeVideo, '_system');
             return false;
         };
@@ -59,7 +58,8 @@
                 nextMovie = movie;
                 $state.go('home.recentlyAddedMovie', {
                     "movieName": nextMovie.title,
-                    "previousTitle": movieName
+                    "previousImdbId": previousImdbId,
+                    "imdbId": nextMovie.imdbId
                 });
             });
         };
@@ -68,16 +68,18 @@
             moviesApi.getRecentlyAddedMovieByIndex(previousMovieIndex).then(function (movie) {
                 $state.go('home.recentlyAddedMovie', {
                     "movieName": movie.title,
-                    "previousTitle": movieName
+                    "previousImdbId": previousImdbId,
+                    "imdbId": movie.imdbId
                 });
             });
         };
 
-        vm.navigateToPreviousMovieByTitle = function (previousMovieTitle) {
-            moviesApi.getMovieDataByTitle(previousMovieTitle).then(function (movie) {
+        vm.navigateToPreviousMovieByTitle = function (imdbId) {
+            moviesApi.getMovieDataByImdbId(imdbId).then(function (movie) {
                 $state.go('home.recentlyAddedMovie', {
                     "movieName": movie.title,
-                    "previousTitle": movieName
+                    "previousImdbId": previousImdbId,
+                    "imdbId": movie.imdbId
                 });
             });
         };
@@ -88,8 +90,8 @@
         };
 
         vm.swipeRight = function () {
-            if ($stateParams.previousTitle) {
-                this.navigateToPreviousMovieByTitle($stateParams.previousTitle);
+            if ($stateParams.imdbId) {
+                this.navigateToPreviousMovieByTitle($stateParams.imdbId);
             }
         };
 
@@ -101,7 +103,6 @@
                 shortlistedMovies.put(movieTitle, {'shortlisted': true});
                 jQuery('.shortlistMessage').addClass('shortlisted');
             }
-            console.log(shortlistedMovies.get(movieTitle));
         };
 
         vm.isMovieShortlisted = function (movieTitle) {

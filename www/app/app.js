@@ -8,7 +8,7 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
-
+    console.log('initial cache setup');
     CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
     CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
@@ -40,7 +40,8 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
       },
       params: {
         top10: false,
-        previousTitle: null
+        previousTitle: null,
+        imdbId: null
       }
     })
 
@@ -53,7 +54,8 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
         },
         params: {
           genre: null,
-          previousTitle: null
+          previousTitle: null,
+          imdbId: null
         }
       })
 
@@ -87,7 +89,9 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
         }
       },
       params: {
-        previousTitle: null
+        previousTitle: null,
+        imdbId: null,
+        previousImdbId: null
       }
     })
 

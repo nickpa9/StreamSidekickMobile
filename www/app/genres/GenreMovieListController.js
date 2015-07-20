@@ -15,19 +15,12 @@
         });
 
         vm.selectMovie = function (movie) {
+            console.log('VM.SELECTMOVIE', movie);
             $state.go("home.genreMovie", {
                 "movieName": movie.title,
-                "genre": genre
+                "genre": genre,
+                "imdbId": movie.imdbId
             });
-        };
-
-        vm.isMovieShortlisted = function (movieTitle) {
-            var shortlistedMovie = shortlistedMovies.get(movieTitle);
-            if (shortlistedMovie) {
-                return shortlistedMovie.shortlisted;
-            } else {
-                return false;
-            }
         };
 
         vm.toggleShortlisted = function (movieTitle, toggleBoolean) {

@@ -17,7 +17,8 @@
             $state.go("home.movie", {
                 "movieName": movie.title,
                 "rank": rank + 1,
-                "top10": true
+                "top10": true,
+                "imdbId": movie.imdbId
             });
         };
 
@@ -43,6 +44,7 @@
         };
 
         vm.toggleShortlisted = function (movieTitle, toggleBoolean) {
+            console.log('hello');
             if (vm.isMovieShortlisted(movieTitle)) {
                 shortlistedMovies.remove(movieTitle);
             } else {
