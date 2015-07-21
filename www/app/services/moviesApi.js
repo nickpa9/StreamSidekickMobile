@@ -105,6 +105,7 @@
     function getMovieByGenreAndIndex(genre, index) {
       var deferred = $q.defer();
       getMoviesByGenre(genre).then(function (response) {
+        console.log(response);
         deferred.resolve(response[index]);
       });
       return deferred.promise;

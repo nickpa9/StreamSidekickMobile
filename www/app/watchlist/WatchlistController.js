@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('WatchlistController', ['moviesApi', 'CacheFactory', WatchlistController]);
+    angular.module('movieApp').controller('WatchlistController', ['$state', 'moviesApi', 'CacheFactory', WatchlistController]);
 
-    function WatchlistController(moviesApi, CacheFactory) {
+    function WatchlistController($state, moviesApi, CacheFactory) {
 
         var vm = this;
         var shortlistedMovies;
@@ -33,6 +33,13 @@
                         console.log(response);
                         vm.movies.push(response);
                     })
+            });
+        };
+
+        vm.goToMovieScreen = function (movie) {
+            $state.go("home.movie", {
+                "movieName": movie.title,
+                "imdbId": movie.imdbId
             });
         };
 

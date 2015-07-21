@@ -2,7 +2,12 @@
     <ion-content has-bouncing="false" class="mainOverlay">
         <ion-list class="listContent list">
 
-            <div draggable="true" class="card" ng-repeat="movie in vm.movies" on-swipe-left="vm.removeFromWatchlist(movie, $event)" on-swipe-right="vm.removeFromWatchlist(movie, $event)">
+            <div draggable="true"
+                 class="card"
+                 ng-repeat="movie in vm.movies"
+                 ng-click="vm.goToMovieScreen(movie)"
+                 on-swipe-left="vm.removeFromWatchlist(movie, $event)"
+                 on-swipe-right="vm.removeFromWatchlist(movie, $event)">
                 <div class="item header">
                     <h2>{{movie.title}}</h2>
                     <p>{{movie.genre}}</p>

@@ -15,7 +15,7 @@
         });
 
         vm.selectMovie = function (movie) {
-            console.log('VM.SELECTMOVIE', movie);
+            console.log('select genre movie');
             $state.go("home.genreMovie", {
                 "movieName": movie.title,
                 "genre": genre,
