@@ -7700,6 +7700,9 @@ a.button {
     padding-left: .6rem;
     border-bottom: 1px solid;
     border-color: rgba(255, 255, 255, 0.1); }
+    .listWrapper .thumbnailList .item:last-child {
+      display: block;
+      height: 200px; }
   .listWrapper .thumbnailList .item-thumbnail-right {
     padding-right: 67px;
     max-height: 100px;
@@ -7895,6 +7898,8 @@ a.button {
   margin: 0;
   background-size: cover;
   background-position: center; }
+  .genreList .item:last-child {
+    margin-bottom: 30px; }
   .genreList .item .overlay {
     margin: 0;
     padding: 0;

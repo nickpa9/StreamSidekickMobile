@@ -10,6 +10,10 @@
     background-size: cover;
     background-position: center;
 
+    &:last-child {
+      margin-bottom: 30px;
+    }
+
     .overlay {
       margin: 0;
       padding: 0;

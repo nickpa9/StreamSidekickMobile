@@ -13,6 +13,10 @@
       padding-left: .6rem;
       border-bottom: 1px solid;
       border-color: rgba(255, 255, 255, .1);
+      &:last-child {
+        display: block;
+        height: 200px;
+      }
     }
     .item-thumbnail-right {
       padding-right: 67px;
