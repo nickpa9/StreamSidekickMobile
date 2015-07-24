@@ -1,16 +1,20 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('RecentlyAddedMovieController', ['$stateParams', '$state', '$scope', 'moviesApi', 'CacheFactory', RecentlyAddedMovieController]);
+    angular.module('movieApp').controller('RecentlyAddedMovieController', ['$stateParams', '$state', '$scope', '$ionicLoading', 'moviesApi', 'CacheFactory', RecentlyAddedMovieController]);
 
-    function RecentlyAddedMovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
+    function RecentlyAddedMovieController($stateParams, $state, $scope, $ionicLoading, moviesApi, CacheFactory) {
         var vm = this;
         var previousImdbId = $stateParams.previousImdbId;
         var recentlyAddedMovieCount;
+        console.log(CacheFactory);
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
 
         this.initialise = function () {
+            $ionicLoading.show({
+                template: 'Fetching movie..'
+            });
             moviesApi.getRecentlyAddedMoviesCount().then(function (response) {
                 recentlyAddedMovieCount = response;
                 vm.loadList(false);
@@ -28,6 +32,7 @@
                 }).finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
                     vm.cleanUpResults();
+                    $ionicLoading.hide();
                 });
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('MovieController', ['$stateParams', '$state', '$scope', 'moviesApi', 'CacheFactory', MovieController]);
+    angular.module('movieApp').controller('MovieController', ['$stateParams', '$state', '$scope', '$ionicLoading', 'moviesApi', 'CacheFactory', MovieController]);
 
-    function MovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
+    function MovieController($stateParams, $state, $scope, $ionicLoading, moviesApi, CacheFactory) {
         var vm = this;
         var isTop10List = false;
         var movieName = $stateParams.movieName;
@@ -11,6 +11,9 @@
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
         this.initialise = function () {
+            $ionicLoading.show({
+                template: 'Fetching movie..'
+            });
             this.setListStatus();
             vm.loadList(false);
         };
@@ -31,10 +34,9 @@
                 moviesApi.getMovieDataByImdbId($stateParams.imdbId).then(function (response) {
                     vm.movie = response;
                     vm.movie.movieTrailer = "http://youtube.com/watch?v=" + vm.movie.trailers[0].videoKey;
-                    console.log(vm.movie);
                 }).finally(function () {
-                    $scope.$broadcast('scroll.refreshComplete');
                     vm.cleanUpResults();
+                    $ionicLoading.hide();
                 });
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());

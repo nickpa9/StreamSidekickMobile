@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('GenreMovieController', ['$stateParams', '$state', '$scope', 'moviesApi', 'CacheFactory', GenreMovieController]);
+    angular.module('movieApp').controller('GenreMovieController', ['$stateParams', '$state', '$scope', '$ionicLoading', 'moviesApi', 'CacheFactory', GenreMovieController]);
 
-    function GenreMovieController($stateParams, $state, $scope, moviesApi, CacheFactory) {
+    function GenreMovieController($stateParams, $state, $scope, $ionicLoading, moviesApi, CacheFactory) {
         var vm = this;
         var isTop10List = false;
         var movieName = $stateParams.movieName;
@@ -14,6 +14,9 @@
 
 
         this.initialise = function () {
+            $ionicLoading.show({
+                template: 'Fetching movie..'
+            });
             this.setListStatus();
             vm.loadList(false);
             this.getGenreMoviesCount();
@@ -44,6 +47,7 @@
                 }).finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
                     vm.cleanUpResults();
+                    $ionicLoading.hide();
                 });
             } else {
                 vm.navigateToNextMovie(this.getRandomMovieIndex());

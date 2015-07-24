@@ -1,18 +1,21 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('RecentlyAddedListController', ['$state', 'moviesApi', 'CacheFactory', RecentlyAddedListController]);
+    angular.module('movieApp').controller('RecentlyAddedListController', ['$state', '$ionicLoading', 'moviesApi', 'CacheFactory', RecentlyAddedListController]);
 
-    function RecentlyAddedListController($state, moviesApi, CacheFactory) {
+    function RecentlyAddedListController($state, $ionicLoading, moviesApi, CacheFactory) {
         var vm = this;
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
+        $ionicLoading.show({
+            template: 'Finding movies..'
+        });
 
         moviesApi.getRecentlyAddedMovies().then(function (response) {
             vm.movies = response;
         }).finally(function () {
             vm.cleanUpResults();
-
+            $ionicLoading.hide();
         });
 
         vm.selectMovie = function (movie) {

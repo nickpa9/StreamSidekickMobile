@@ -128,13 +128,13 @@
     }
 
     function getMovieById(movieId) {
-      return _.find(movies.top10Movies.movies, function (movie) {
+      return _.find(this.movies.top10Movies.movies, function (movie) {
         return movie.id === parseInt(movieId);
       });
     }
 
     function getMovieByImdbId(movieImdbId) {
-      return _.find(movies.top10Movies.movies, function (movie) {
+      return _.find(this.movies.top10Movies.movies, function (movie) {
         return movie.movieImdbId === parseInt(movieImdbId);
       });
     }
@@ -177,11 +177,15 @@
 
     function getAllMovieData() {
       var _this = this;
+      console.log(self.moviesCache);
+      console.log(self.topRatedMovies);
+      console.log(self.genreMovies);
+      console.log(self.recentlyAddedMovies);
       if (!self.moviesCache || !self.topRatedMovies || !self.genreMovies || !self.recentlyAddedMovies) {
         setTimeout(function () {
           getAllMovieData();
           console.log('trying again');
-        }, 200);
+        }, 1000);
       } else {
         getRecentlyAddedMovies();
         getTop10Movies();

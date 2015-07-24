@@ -8,18 +8,16 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
-    console.log('initial cache setup');
-    CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
-    CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
-    CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
-    CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 500000, deleteOnExpire: 'aggressive' });
+    CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 60*60*24*7, deleteOnExpire: 'aggressive' });
+    CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
+    CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
+    CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 60*60*24, deleteOnExpire: 'aggressive' });
     CacheFactory('staticCache', { storageMode: 'localStorage' });
     CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpire: 'aggressive' });
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-      //$ionicConfigProvider.views.transition('none');
+.config(function($stateProvider, $urlRouterProvider) {
 
 
       $stateProvider

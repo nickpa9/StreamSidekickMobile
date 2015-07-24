@@ -1,16 +1,21 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('Top10Controller', ['$state', 'moviesApi', 'CacheFactory', Top10Controller]);
+    angular.module('movieApp').controller('Top10Controller', ['$state', '$ionicLoading', 'moviesApi', 'CacheFactory', Top10Controller]);
 
-    function Top10Controller($state, moviesApi, CacheFactory) {
+    function Top10Controller($state, $ionicLoading, moviesApi, CacheFactory) {
         var vm = this;
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
+
+        $ionicLoading.show({
+            template: 'Finding movies..'
+        });
 
         moviesApi.getTop10Movies().then(function (response) {
             vm.top10Movies = response;
         }).finally(function () {
             vm.cleanUpResults();
+            $ionicLoading.hide();
         });
 
         vm.selectMovie = function (movie, rank) {
@@ -44,7 +49,6 @@
         };
 
         vm.toggleShortlisted = function (movieTitle, toggleBoolean) {
-            console.log('hello');
             if (vm.isMovieShortlisted(movieTitle)) {
                 shortlistedMovies.remove(movieTitle);
             } else {
