@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('Top10Controller', ['$state', '$ionicLoading', 'moviesApi', 'CacheFactory', Top10Controller]);
+    angular.module('movieApp').controller('Top10Controller', ['$state', '$ionicLoading', '$ionicPopup', 'moviesApi', 'CacheFactory', Top10Controller]);
 
-    function Top10Controller($state, $ionicLoading, moviesApi, CacheFactory) {
+    function Top10Controller($state, $ionicLoading, $ionicPopup, moviesApi, CacheFactory) {
         var vm = this;
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
 
@@ -13,6 +13,12 @@
 
         moviesApi.getTop10Movies().then(function (response) {
             vm.top10Movies = response;
+        }).catch(function () {
+            $ionicLoading.hide();
+            $ionicPopup.alert({
+                title: "No movies found",
+                content: "We've got a problem here. Please check your internet connection."
+            })
         }).finally(function () {
             vm.cleanUpResults();
             $ionicLoading.hide();

@@ -16,23 +16,27 @@
 
     function getMovies () {
       var deferred = $q.defer();
-
+      if (isConnected()) {
       $http.get(apiHost + '/api/amazonPrime/movies/')
-      .success(function (data, status) {
-        if (status === 200) {
-          data.forEach(function (movie) {
-            if (!self.moviesCache.get(movie.imdbId)) {
-              self.moviesCache.put(movie.imdbId, movie);
+          .success(function (data, status) {
+            if (status === 200) {
+              data.forEach(function (movie) {
+                if (!self.moviesCache.get(movie.imdbId)) {
+                  self.moviesCache.put(movie.imdbId, movie);
+                }
+              });
+              deferred.resolve(data);
+            } else {
+              deferred.reject(status);
             }
+          })
+          .error(function (err) {
+            deferred.reject(err);
           });
-          deferred.resolve(data);
-        } else {
-          deferred.reject(status);
-        }
-      })
-      .error(function (err) {
-        deferred.reject(err);
-      });
+      }
+      else {
+        deferred.reject('no internet');
+      }
       return deferred.promise;
     }
 
@@ -43,14 +47,20 @@
       if (top10Movies) {
         deferred.resolve(top10Movies);
       } else {
-        $http.get(apiHost + '/api/amazonPrime/movies/top/50')
-            .success(function (data, status) {
-              self.topRatedMovies.put('top10Movies', data);
-              deferred.resolve(data);
-            })
-            .error(function (err) {
-          deferred.reject(err);
-        });
+        if (isConnected()) {
+          $http.get(apiHost + '/api/amazonPrime/movies/top/50')
+              .success(function (data, status) {
+                if (status === 200) {
+                  self.topRatedMovies.put('top10Movies', data);
+                  deferred.resolve(data);
+                } else {
+                  deferred.reject(status);
+                }
+              })
+              .error(function (err) {
+                deferred.reject(err);
+              });
+        }
       }
       return deferred.promise;
     }
@@ -62,14 +72,22 @@
         if (genreMovies) {
           deferred.resolve(genreMovies);
         } else {
-          $http.get(apiHost + '/api/amazonPrime/movies/' + genre + '/top/100')
-            .success(function (data, status) {
-                self.genreMovies.put(genre, data);
-                deferred.resolve(data);
-            })
-            .error(function (err) {
-                deferred.reject(err);
-            })
+          if (isConnected()) {
+            $http.get(apiHost + '/api/amazonPrime/movies/' + genre + '/top/100')
+                .success(function (data, status) {
+                  if (status === 200) {
+                    self.genreMovies.put(genre, data);
+                    deferred.resolve(data);
+                  } else {
+                    deferred.reject(status);
+                  }
+                })
+                .error(function (err) {
+                  deferred.reject(err);
+                });
+          } else {
+            deferred.reject('no internet');
+          }
         }
 
       return deferred.promise;
@@ -81,14 +99,22 @@
       if (recentlyAddedMovies) {
         deferred.resolve(recentlyAddedMovies);
       } else {
-        $http.get(apiHost + '/api/amazonPrime/movies/recentlyAdded')
-          .success(function (data, status) {
-            self.recentlyAddedMovies.put('recentlyReleased', data);
-            deferred.resolve(data);
-          })
-          .error(function (err) {
-              deferred.reject(err);
-          })
+        if (isConnected()) {
+          $http.get(apiHost + '/api/amazonPrime/movies/recentlyAdded')
+              .success(function (data, status) {
+                if (status === 200) {
+                  self.recentlyAddedMovies.put('recentlyReleased', data);
+                  deferred.resolve(data);
+                } else {
+                  deferred.reject(status);
+                }
+              })
+              .error(function (err) {
+                deferred.reject(err);
+              });
+        } else {
+          deferred.reject('no internet');
+        }
       }
 
       return deferred.promise;
@@ -105,7 +131,6 @@
     function getMovieByGenreAndIndex(genre, index) {
       var deferred = $q.defer();
       getMoviesByGenre(genre).then(function (response) {
-        console.log(response);
         deferred.resolve(response[index]);
       });
       return deferred.promise;
@@ -177,10 +202,6 @@
 
     function getAllMovieData() {
       var _this = this;
-      console.log(self.moviesCache);
-      console.log(self.topRatedMovies);
-      console.log(self.genreMovies);
-      console.log(self.recentlyAddedMovies);
       if (!self.moviesCache || !self.topRatedMovies || !self.genreMovies || !self.recentlyAddedMovies) {
         setTimeout(function () {
           getAllMovieData();
@@ -190,10 +211,18 @@
         getRecentlyAddedMovies();
         getTop10Movies();
         getMovies().then(function (data) {
-          console.log('got movies', data);
           _this.movies = data;
         });
       }
+    }
+
+    function isConnected() {
+      if (window.Connection) {
+        if (navigator.connection.type !== Connection.NONE) {
+          return true;
+        }
+      }
+      return false;
     }
 
     return {

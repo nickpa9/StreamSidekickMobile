@@ -13,6 +13,12 @@
 
         moviesApi.getRecentlyAddedMovies().then(function (response) {
             vm.movies = response;
+        }).catch(function () {
+            $ionicLoading.hide();
+            $ionicPopup.alert({
+                title: "No movies found",
+                content: "We've got a problem here. Please check your internet connection."
+            })
         }).finally(function () {
             vm.cleanUpResults();
             $ionicLoading.hide();
