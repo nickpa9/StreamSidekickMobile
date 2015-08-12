@@ -31,6 +31,7 @@
             }
           })
           .error(function (err) {
+            console.log(err);
             deferred.reject(err);
           });
       }
@@ -50,6 +51,7 @@
         if (isConnected()) {
           $http.get(apiHost + '/api/amazonPrime/movies/top/50')
               .success(function (data, status) {
+                console.log(data, status);
                 if (status === 200) {
                   self.topRatedMovies.put('top10Movies', data);
                   deferred.resolve(data);
@@ -60,6 +62,8 @@
               .error(function (err) {
                 deferred.reject(err);
               });
+        } else {
+          deferred.reject('no internet');
         }
       }
       return deferred.promise;
@@ -217,7 +221,7 @@
     }
 
     function isConnected() {
-      if (window.Connection) {
+      if (window.Connection && window.online) {
         if (navigator.connection.type !== Connection.NONE) {
           return true;
         }

@@ -15,6 +15,7 @@
             vm.top10Movies = response;
         }).catch(function () {
             $ionicLoading.hide();
+            $state.go("home");
             $ionicPopup.alert({
                 title: "No movies found",
                 content: "We've got a problem here. Please check your internet connection."

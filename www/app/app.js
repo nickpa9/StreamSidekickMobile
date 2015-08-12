@@ -2,12 +2,25 @@ angular.module('movieApp', ['ionic', 'angular-cache'])
 
 .run(function ($ionicPlatform, CacheFactory) {
   $ionicPlatform.ready(function () {
+    window.online = true;
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    document.addEventListener("offline", onOffline, false);
+    document.addEventListener("online", onOnline, false);
+
+    function onOffline () {
+        window.online = false;
+    }
+
+    function onOnline () {
+        window.online = true;
+    }
+
     CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 60*60*24*7, deleteOnExpire: 'aggressive' });
     CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
     CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });

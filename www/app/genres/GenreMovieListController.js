@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('movieApp').controller('GenreMovieListController', ['$stateParams', '$state', '$ionicLoading', 'moviesApi', 'CacheFactory', GenreMovieListController]);
+    angular.module('movieApp').controller('GenreMovieListController', ['$stateParams', '$state', '$ionicLoading', '$ionicPopup', 'moviesApi', 'CacheFactory', GenreMovieListController]);
 
-    function GenreMovieListController($stateParams, $state, $ionicLoading ,moviesApi, CacheFactory) {
+    function GenreMovieListController($stateParams, $state, $ionicLoading, $ionicPopup, moviesApi, CacheFactory) {
         var vm = this;
         var genre = $stateParams.genre || {};
         var shortlistedMovies = CacheFactory.get('shortlistedMovies');
@@ -15,6 +15,13 @@
         vm.genre = genre.name;
         moviesApi.getMoviesByGenre(vm.genre).then(function (response) {
             vm.genreMovies = response;
+        }).catch(function () {
+            $ionicLoading.hide();
+            $state.go("home.genres");
+            $ionicPopup.alert({
+                title: "No movies found",
+                content: "We've got a problem here. Please check your internet connection."
+            });
         }).finally(function () {
             vm.cleanUpResults();
             $ionicLoading.hide();
