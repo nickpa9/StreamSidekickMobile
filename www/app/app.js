@@ -1,32 +1,33 @@
-angular.module('movieApp', ['ionic', 'angular-cache'])
+angular.module('movieApp', ['ionic', 'ionic.service.analytics', 'angular-cache'])
 
-.run(function ($ionicPlatform, CacheFactory) {
-  $ionicPlatform.ready(function () {
-    window.online = true;
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-
-    document.addEventListener("offline", onOffline, false);
-    document.addEventListener("online", onOnline, false);
-
-    function onOffline () {
-        window.online = false;
-    }
-
-    function onOnline () {
+.run(function ($ionicPlatform, $ionicAnalytics, CacheFactory) {
+    $ionicPlatform.ready(function () {
+        $ionicAnalytics.register();
         window.online = true;
-    }
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if (window.StatusBar) {
+          StatusBar.styleDefault();
+        }
 
-    CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 60*60*24*7, deleteOnExpire: 'aggressive' });
-    CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
-    CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
-    CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 60*60*24, deleteOnExpire: 'aggressive' });
-    CacheFactory('staticCache', { storageMode: 'localStorage' });
-    CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpire: 'aggressive' });
+        document.addEventListener("offline", onOffline, false);
+        document.addEventListener("online", onOnline, false);
+
+        function onOffline () {
+            window.online = false;
+        }
+
+        function onOnline () {
+            window.online = true;
+        }
+
+        CacheFactory('moviesCache', { storageMode: 'localStorage', maxAge: 60*60*24*7, deleteOnExpire: 'aggressive' });
+        CacheFactory('topRatedMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
+        CacheFactory('genreMovies', { storageMode: 'localStorage', maxAge: 60*60*24*5, deleteOnExpire: 'aggressive' });
+        CacheFactory('recentlyAddedMovies', { storageMode: 'localStorage', maxAge: 60*60*24, deleteOnExpire: 'aggressive' });
+        CacheFactory('staticCache', { storageMode: 'localStorage' });
+        CacheFactory('shortlistedMovies', {storageMode: 'localStorage', maxAge: 100000000*10000000, deleteOnExpire: 'aggressive' });
   });
 })
 
